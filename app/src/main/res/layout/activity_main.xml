@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background_dark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/containerfull"
+        android:background="@drawable/rounded">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar3"
+            style="@style/Toolbar"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/roundedsus">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                app:srcCompat="@drawable/zvonneee" />
+        </android.support.v7.widget.Toolbar>
+
+        <RelativeLayout
+            android:id="@+id/containermare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar3">
+
+
+            <RelativeLayout
+                android:id="@+id/container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottomBar"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/guillotine_background">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false">
+
+                </android.support.v4.view.ViewPager>
+            </RelativeLayout>
+
+            <com.roughike.bottombar.BottomBar
+                android:id="@+id/bottomBar"
+
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/rounded"
+                app:bb_activeTabAlpha="1"
+                app:bb_activeTabColor="#FFFFFF"
+                app:bb_badgesHideWhenActive="true"
+                app:bb_behavior="underNavbar"
+                app:bb_inActiveTabAlpha="0.5"
+                app:bb_inActiveTabColor="#FFFFFF"
+                app:bb_showShadow="true"
+                app:bb_tabXmlResource="@xml/bottom"
+                app:bb_tabletMode="false" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>

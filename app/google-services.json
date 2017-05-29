@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "731453627159",
+    "firebase_url": "https://zvonnecaffe.firebaseio.com",
+    "project_id": "zvonnecaffe",
+    "storage_bucket": "zvonnecaffe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731453627159:android:7dc3222f41f1bbd8",
+        "android_client_info": {
+          "package_name": "com.example.narcis.zvonne"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731453627159-h725sul5592ib4jdhhne9rjmt8vaun3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.narcis.zvonne",
+            "certificate_hash": "A3CD59147E869D03279756FBD541376B4252E0B3"
+          }
+        },
+        {
+          "client_id": "731453627159-e060dk09o0qidetlpb6rodct4nnb0r0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdokxHAuwRnhhSG7OrI9CCO8E8bilouk8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731453627159-e060dk09o0qidetlpb6rodct4nnb0r0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

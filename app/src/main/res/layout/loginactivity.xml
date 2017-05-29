@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/guillotine_background"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        style="@style/Toolbar"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+      android:background="@color/guillotine_background_dark">
+
+        <ImageView
+            android:id="@+id/imageView387"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/zvonneee" />
+    </android.support.v7.widget.Toolbar>
+    <com.facebook.login.widget.LoginButton
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/facebooklogin"
+        app:theme="@style/com_facebook_button_share"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+    <ImageView
+
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/google"
+        android:id="@+id/imagegoogle"
+        android:visibility="gone"
+        android:layout_marginBottom="14dp"
+        android:layout_above="@+id/iamgefacebook"
+        android:layout_alignLeft="@+id/iamgefacebook"
+        android:layout_alignStart="@+id/iamgefacebook" />
+
+
+    <com.example.narcis.zvonne.obiecte.butonotf
+        android:text="Conecteaza-te prin facebook"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/facebook"
+        android:background="@color/com_facebook_blue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:id="@+id/iamgefacebook"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/facebooklogin"
+        android:layout_toEndOf="@+id/facebooklogin" />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/zvonne"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/imageView4" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googlelogin"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/facebooklogin"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+    </com.google.android.gms.common.SignInButton>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/imageView4"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+
+       />
+
+</RelativeLayout>

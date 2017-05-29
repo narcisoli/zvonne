@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profilcontainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background">
+
+
+    <RelativeLayout
+        android:id="@+id/relid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            app:srcCompat="@drawable/user" />
+
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/numecont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/titlu"
+           />
+
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/emailcont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numecont"
+            android:layout_alignLeft="@id/numecont"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="@dimen/normal"
+          />
+    </RelativeLayout>
+
+    <com.example.narcis.zvonne.obiecte.butonotf
+
+        android:id="@+id/istoriccomenzi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Comenzi"
+        android:textColor="@color/white" />
+
+
+    <com.example.narcis.zvonne.obiecte.butonotf
+
+        android:id="@+id/despre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/istoriccomenzi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Despre"
+        android:textColor="@color/white" />
+
+    <com.example.narcis.zvonne.obiecte.butonotf
+
+        android:id="@+id/deconectare"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/despre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded"
+
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Deconecteaza-te"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

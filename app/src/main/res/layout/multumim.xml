@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background"
+    android:padding="10dp">
+
+
+    <com.example.narcis.zvonne.obiecte.otf
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventname"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="@dimen/normal"
+
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text=" Comanda dumneavoastră a fost înregistrată cu succes!\nVă mulțumim că ați comandat de la noi . \n\nApăsa mai jos pentru a fi la curent cu statusul comenzii! "
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/checked"
+        android:layout_marginBottom="29dp"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/eventname"
+        android:layout_centerHorizontal="true" />
+
+    <com.example.narcis.zvonne.obiecte.butonotf
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:id="@+id/multumimcomandabuton"
+
+        android:textColor="@color/white"
+        android:text="ISTORIC"
+        android:background="@drawable/rounded" />
+
+</RelativeLayout>
