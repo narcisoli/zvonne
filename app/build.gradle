@@ -32,7 +32,6 @@ dependencies {
 
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
-
     compile 'com.android.support:design:25.3.1'
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'com.github.fccaikai:BottomMenuTutorial:1.0.2'
@@ -47,10 +46,12 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.android.support:support-vector-drawable:24.2.1'
     compile 'com.yarolegovich:lovely-dialog:1.0.7'
-    compile 'me.zhanghai.android.materialratingbar:library:1.0.2'
     compile 'com.github.songixan:SmileRefresh:1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-auth:10.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
     testCompile 'junit:junit:4.12'
 }
 

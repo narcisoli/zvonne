@@ -15,16 +15,19 @@ import com.example.narcis.zvonne.fragPrincipale.eventfragment;
 import com.example.narcis.zvonne.fragPrincipale.meniu;
 import com.example.narcis.zvonne.fragPrincipale.menufragment;
 import com.example.narcis.zvonne.fragPrincipale.profilfragment;
+import com.example.narcis.zvonne.fragSecundare.pizza.pizza1;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabSelectListener;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements meniu.comunicare ,comandafragment.trimitebadge {
+public class MainActivity extends AppCompatActivity implements pizza1.comunicare,comandafragment.trimitebadge {
 
     android.app.FragmentManager fragmentManager = getFragmentManager();
 
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements meniu.comunicare 
         setContentView(R.layout.activity_main);
         Log.i("Notif","pornim service");
         startService(new Intent(this,MyService.class));
+
+
+
+
         f=fragmentManager;
         init();
         nearby= bottomBar.getTabWithId(R.id.tab_comanda);
@@ -59,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements meniu.comunicare 
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 if(getSupportFragmentManager().getBackStackEntryCount()!=0)
-                    getSupportFragmentManager().popBackStack();
+                    getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.container)).commit();
                 switch(tabId){
                     case R.id.tab_meniu:viewPager.setCurrentItem(0);break;
                     case R.id.tab_evenimente:viewPager.setCurrentItem(1);break;

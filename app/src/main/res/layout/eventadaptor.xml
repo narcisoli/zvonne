@@ -7,6 +7,7 @@
     android:layout_alignParentTop="true"
     android:layout_margin="10dp"
     android:orientation="vertical"
+    android:clickable="false"
     android:padding="10dp">
 
     <RelativeLayout
@@ -53,7 +54,7 @@
             android:id="@+id/divider"
             android:layout_marginTop="5dp"
             android:layout_below="@id/eventdata"
-            android:background="@color/guillotine_background" />
+            android:background="@color/fundal" />
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/eventdescriere"
             android:layout_width="wrap_content"

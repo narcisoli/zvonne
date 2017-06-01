@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/guillotine_background_dark"
+    android:background="@color/fundaldark"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -46,7 +46,7 @@
                 android:layout_above="@+id/bottomBar"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="@color/guillotine_background">
+                android:background="@color/fundal">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPager"
@@ -64,15 +64,15 @@
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/rounded"
-                app:bb_activeTabAlpha="1"
+
                 app:bb_activeTabColor="#FFFFFF"
-                app:bb_badgesHideWhenActive="true"
+                app:bb_badgesHideWhenActive="false"
                 app:bb_behavior="underNavbar"
                 app:bb_inActiveTabAlpha="0.5"
+                app:bb_longPressHintsEnabled="true"
                 app:bb_inActiveTabColor="#FFFFFF"
-                app:bb_showShadow="true"
                 app:bb_tabXmlResource="@xml/bottom"
-                app:bb_tabletMode="false" />
+                />
 
         </RelativeLayout>
     </RelativeLayout>

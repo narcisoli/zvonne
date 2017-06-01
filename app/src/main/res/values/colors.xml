@@ -3,9 +3,9 @@
     <color name="colorPrimary">#020a34</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#505050</color>
-    <color name="guillotine_background">#444153</color>
+    <color name="fundal">#444153</color>
 
-    <color name="guillotine_background_dark">#383547</color>
+    <color name="fundaldark">#383547</color>
     <color name="selected_item_color">#fd4d52</color>
     <color name="white" >#FFFFFF</color>
     <color name="black" >#000000</color>

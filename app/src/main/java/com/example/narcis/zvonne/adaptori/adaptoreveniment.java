@@ -80,7 +80,7 @@ public class adaptoreveniment extends ArrayAdapter<eveniment> {
             eventdescriere = (TextView) view.findViewById(R.id.eventdescriere);
             eventdata = (TextView) view.findViewById(R.id.eventdata);
             eventdata.setText(loc.getData());
-            eventdescriere.setText(loc.getDetalii());
+            eventdescriere.setText(loc.getNume());
 
 
         }

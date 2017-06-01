@@ -1,27 +1,18 @@
 package com.example.narcis.zvonne.adaptori;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.narcis.zvonne.MainActivity;
 import com.example.narcis.zvonne.R;
-import com.example.narcis.zvonne.fragSecundare.comandapizza;
 import com.example.narcis.zvonne.obiecte.pizza;
-import com.kcode.bottomlib.BottomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**

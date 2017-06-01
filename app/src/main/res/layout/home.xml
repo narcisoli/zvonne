@@ -2,26 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/guillotine_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/fundal"
     android:orientation="vertical">
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/call"
-    android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:background="@color/guillotine_background_dark"
-        android:layout_margin="5dp"/>
 
+    <com.example.narcis.zvonne.obiecte.otf
+        android:id="@+id/ofertazilei"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded"
+        android:padding="10dp"
+        android:text="Se incarca..."
+        android:textAlignment="center"
+        android:textColor="#ffa3a3"
+        android:textSize="@dimen/normal" />
 
     <com.example.narcis.zvonne.obiecte.otf
         android:id="@+id/descriere"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+       android:layout_below="@id/ofertazilei"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
@@ -36,7 +43,8 @@
         android:id="@+id/eventname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/descriere"
+        android:layout_below="@id/descriere"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -45,32 +53,75 @@
         android:text="Strada Armatei Nr.53"
         android:textAlignment="center"
         android:textColor="@color/white"
-
         android:textSize="15sp" />
 
-    <com.example.narcis.zvonne.obiecte.otf
-        android:id="@+id/ofertazilei"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/eventname"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/rounded"
-        android:padding="10dp"
-        android:text="Se incarca..."
-        android:textAlignment="center"
-        android:textColor="#ffa3a3"
-        android:textSize="@dimen/normal" />
+
 
     <ImageView
         android:id="@+id/imageView25"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_above="@id/ofertazilei"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@id/fab3"
+       android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/add"
+        app:backgroundTint="@color/fundaldark"
+        app:borderWidth="0dp"
+        app:elevation="14dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/fundal" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+       android:layout_above="@id/fab1"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/placeholder"
+        app:backgroundTint="@color/fundaldark"
+        app:borderWidth="0dp"
+        app:elevation="14dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/fundal" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/fab3"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/internet"
+        app:backgroundTint="@color/fundaldark"
+        app:borderWidth="0dp"
+        app:elevation="14dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/fundal" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/call"
+        app:backgroundTint="@color/fundaldark"
+        app:borderWidth="0dp"
+        app:elevation="14dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/fundal" />
+
+
 
 
 </RelativeLayout>
