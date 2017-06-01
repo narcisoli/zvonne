@@ -58,11 +58,17 @@ public class MyService extends Service {
 
     private void notif() {
         if (bool) {
+
             Intent notificationIntent = new Intent(this, MainActivity.class);
             notificationIntent.putExtra("fragment", "comenzi");
             PendingIntent contentIntent = PendingIntent.getActivity(this,
-                    0, notificationIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                    2, notificationIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT
+            );
+            Intent resultIntent = new Intent(this, MainActivity.class);
+            resultIntent.setAction(Intent.ACTION_MAIN);
+            resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, resultIntent, 0);
 
             NotificationManager nm = (NotificationManager) this
                     .getSystemService(Context.NOTIFICATION_SERVICE);
@@ -70,7 +76,7 @@ public class MyService extends Service {
 
             Notification.Builder builder = new Notification.Builder(this);
             Resources res = this.getResources();
-            builder.setContentIntent(contentIntent)
+            builder.setContentIntent(pendingIntent)
                     .setSmallIcon(R.drawable.zvonne)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.zvonne))
                     .setTicker("Ticker")
