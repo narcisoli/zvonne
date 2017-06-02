@@ -15,6 +15,7 @@ import com.example.narcis.zvonne.fragPrincipale.eventfragment;
 import com.example.narcis.zvonne.fragPrincipale.meniu;
 import com.example.narcis.zvonne.fragPrincipale.menufragment;
 import com.example.narcis.zvonne.fragPrincipale.profilfragment;
+import com.example.narcis.zvonne.fragSecundare.istoriccomenzi;
 import com.example.narcis.zvonne.fragSecundare.pizza.pizza1;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,14 +30,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements pizza1.comunicare,comandafragment.trimitebadge {
 
-    android.app.FragmentManager fragmentManager = getFragmentManager();
 
-    public static android.app.FragmentManager f;
-    public static BottomBar bottomBar;
+
+
+    public  BottomBar bottomBar;
     private ViewPager viewPager;
-    public static FragmentManager fram;
     private List<pizza> pizzaList=new ArrayList<>();
     private BottomBarTab nearby;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +46,15 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         Log.i("Notif","pornim service");
         startService(new Intent(this,MyService.class));
 
-
-
-
-        f=fragmentManager;
+        if(getIntent().getExtras()!=null)
+        {
+            viewPager.setCurrentItem(4);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
+        }
         init();
         nearby= bottomBar.getTabWithId(R.id.tab_comanda);
         ascultabutoane();
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        fram=getSupportFragmentManager();
         bottomBar.selectTabAtPosition(2,true);
 
     }

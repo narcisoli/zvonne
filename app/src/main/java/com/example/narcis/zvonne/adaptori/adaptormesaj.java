@@ -37,7 +37,7 @@ public class adaptormesaj extends ArrayAdapter<mesaj> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
-        final android.app.FragmentManager fragmentManager = MainActivity.f;
+
         if (view == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             view = layoutInflater.inflate(layoutResource, null);

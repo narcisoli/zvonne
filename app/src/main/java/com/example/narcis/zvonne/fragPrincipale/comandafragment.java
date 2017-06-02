@@ -25,18 +25,24 @@ import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import java.util.ArrayList;
 import java.util.List;
 public class comandafragment extends Fragment{
+    public static int pret;
     private static comandafragment instance;
+    public  TextView pret1;
     View myView;
     private ListView listView;
-    public  TextView pret1;
     private adaptorcomanda adaptor;
-    public static int pret;
     private List<pizza> pizzaList=new ArrayList<>();
     private FragmentManager f;
     private trimitebadge trim;
     private Button buton;
     private TextView butoncomanda;
     private TextView butonsterge;
+
+    public static comandafragment newInstance() {
+        if (instance==null)
+            instance = new comandafragment();
+        return instance;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.comandafragment, container, false);
@@ -46,6 +52,7 @@ public class comandafragment extends Fragment{
 
         return myView;
     }
+
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
@@ -55,16 +62,13 @@ public class comandafragment extends Fragment{
                     + " must implement OnHeadlineSelectedListener");
         }
     }
-    public interface trimitebadge{
-        public void send(int i);
-    }
 
     private void ascultabunoane() {
       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
               BottomDialog dialog = BottomDialog.newInstance("",new String[]{"1 bucata","2 bucati","3 bucati","4 bucati","5 bucati","6 bucati","7 bucati","8 bucati","9 bucati","Elimina"});
-              dialog.show(MainActivity.fram,"dialog");
+              dialog.show(getFragmentManager(),"dialog");
               dialog.setListener(new BottomDialog.OnClickListener() {
                   @Override
                   public void click(int position) {
@@ -130,13 +134,11 @@ public class comandafragment extends Fragment{
         calculeazapret();
     }
 
-    public static comandafragment newInstance() {
-        if (instance==null)
-            instance = new comandafragment();
-        return instance;
-    }
     public void setPizzaList(List<pizza> list){
         this.pizzaList=list;
+    }
+    public interface trimitebadge{
+        public void send(int i);
     }
 
 }
