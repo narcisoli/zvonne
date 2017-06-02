@@ -24,7 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 
 /**
@@ -33,6 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class pizza1 extends Fragment {
 
+    private static pizza1 instance;
     private View myView;
     private pizza pizza;
     private TextView numepizza;
@@ -40,15 +41,16 @@ public class pizza1 extends Fragment {
     private TextView pretpizza;
     private CircleImageView imageView;
     private StorageReference storageReference;
-
     private TextView totalpizza;
     private TextView gramajpizza;
     private TextView notapizza;
     private FloatingActionButton fab;
     private comunicare mCallback;
 
-    public interface comunicare {
-        public void trimitemesaj(pizza pizza);
+    public static pizza1 getInstance() {
+        if (instance == null)
+            instance = new pizza1();
+        return instance;
     }
 
     @Override
@@ -68,16 +70,12 @@ public class pizza1 extends Fragment {
         return myView;
     }
 
-    private static pizza1 instance;
-
-    public static pizza1 getInstance() {
-        if (instance == null)
-            instance = new pizza1();
-        return instance;
-    }
-
     private void init() {
-
+        MaterialRatingBar ratingBar = (MaterialRatingBar) myView.findViewById(R.id.rating_bar);
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
         pretpizza=(TextView)myView.findViewById(R.id.pretpizza);
         fab = (FloatingActionButton) myView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,10 +84,11 @@ public class pizza1 extends Fragment {
                 mCallback.trimitemesaj(pizza);
             }
         });
+        notapizza = (TextView) myView.findViewById(R.id.notapizza);
         numepizza = (TextView) myView.findViewById(R.id.numepizza);
         ingredientepizza = (TextView) myView.findViewById(R.id.ingredientepizza);
         gramajpizza = (TextView) myView.findViewById(R.id.gramajpizza);
-
+        ratingBar.setRating(pizza.getNota());
         imageView = (CircleImageView) myView.findViewById(R.id.imaginepizza);
 
         storageReference = FirebaseStorage.getInstance().getReference().child("Imagini").child("Pizza").child(pizza.getTip() + ".jpg");
@@ -97,7 +96,8 @@ public class pizza1 extends Fragment {
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
                 .into(imageView);
-
+        numepizza.setText(pizza.getTip());
+        notapizza.setText("( nota "+pizza.getNota()+" din "+pizza.getNrvoturi()+" voturi )");
         gramajpizza.setText(pizza.getGramaj() + "");
         pretpizza.setText(pizza.getPret()+" lei");
         ingredientepizza.setText(pizza.getIngrediente());
@@ -106,6 +106,10 @@ public class pizza1 extends Fragment {
 
     public void setPizza(pizza n) {
         this.pizza = n;
+    }
+
+    public interface comunicare {
+        public void trimitemesaj(pizza pizza);
     }
 
 }

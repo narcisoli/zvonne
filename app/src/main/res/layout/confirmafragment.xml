@@ -2,105 +2,134 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundal"
-    >
+    android:orientation="vertical">
 
 
     <RelativeLayout
+        android:id="@+id/containerlogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="false"
-        android:id="@+id/containerlogin"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="10dp">
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:clickable="false">
+
+
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Unde vreti sa fie livrata?"
+            android:textColor="@color/white"
+
+            android:textSize="16dp"
+
+            />
+
+        <EditText
+            android:id="@+id/editTextadresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView28"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundedalb"
+            android:ems="10"
+            android:hint="ex: str.Armatei nr 53"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+
+            android:textSize="@dimen/normal" />
 
 
 
-            <com.example.narcis.zvonne.obiecte.otf
-                android:text="Unde vreti sa fie livrata?\n(ex: str.Armatei nr 53)"
-                android:layout_width="match_parent"
-                android:background="@drawable/rounded"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView28"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:layout_alignParentTop="true"
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/textviewwwww1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextadresa"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
 
-                android:layout_marginTop="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Numar de telefon :"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
-                android:layout_centerHorizontal="true" />
+        <EditText
+            android:id="@+id/numartelefon"
 
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:ems="10"
-                android:layout_below="@+id/textView28"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/editTextadresa"
-                android:textColorLink="@color/white"
-                android:textColorHint="@color/white"
-                android:textColorHighlight="@color/white"
-                android:textColor="@android:color/white"
-
-                android:layout_height="wrap_content" />
-
-            <com.example.narcis.zvonne.obiecte.otf
-                android:text="Daca mai ai ceva de adaugat la comanda aici e locul\n(ex: pizza x sa fie fara ciuperci)"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textviewwwww"
-                android:background="@drawable/rounded"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/editTextadresa"
-                android:layout_centerHorizontal="true" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:ems="10"
-                android:layout_below="@+id/textviewwwww"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="17dp"
-                android:id="@+id/detaliic2"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColorLink="@color/white"
-                android:textColorHint="@color/white"
-                android:textColorHighlight="@color/white"
-                android:textColor="@android:color/background_light"
-                android:layout_height="wrap_content" />
-
-            <com.example.narcis.zvonne.obiecte.butonotf
-                android:text="CONFIRMA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/comandac2"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded"
-                android:layout_below="@+id/detaliic2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="17dp" />
-        </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textviewwwww1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundedalb"
+            android:ems="10"
+            android:hint="0740187671"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/normal" />
 
 
+        <ImageView
+            android:id="@+id/comandac2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/check"
+            android:textColor="@color/white"
+            android:textSize="@dimen/normal" />
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/textviewwwww"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numartelefon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
 
+            android:layout_marginTop="10dp"
+            android:text="Alte detalii :"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
+        <EditText
+            android:id="@+id/detaliic2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textviewwwww"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundedalb"
+            android:ems="10"
+            android:hint="ex: pizza x sa fie fara ciuperci"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/normal" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

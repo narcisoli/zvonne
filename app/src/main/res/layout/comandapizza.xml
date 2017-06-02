@@ -23,20 +23,33 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:src="@color/white" />
-
-        <com.example.narcis.zvonne.obiecte.otf
-            android:id="@+id/numepizza"
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/rating_bar"
+            style="@style/Widget.MaterialRatingBar.RatingBar.Indicator"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@id/imaginepizza"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="3"
+            android:stepSize="0.5"
+            />
+
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/notapizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rating_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
             android:background="@color/fundal"
             android:text="Pizza Capriciaoasa"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/titlu" />
+            android:textSize="@dimen/mic" />
 
 
 
@@ -46,19 +59,45 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
 
+            android:layout_below="@id/notapizza"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:scaleY="0.051"></View>
+
+        <com.example.narcis.zvonne.obiecte.otf
+            android:id="@+id/numepizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/fundal"
+            android:text="Pizza Capriciaoasa"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/titlu" />
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
             android:layout_below="@id/numepizza"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/white"
-            android:scaleY="0.1"></View>
-
+            android:scaleY="0.03"></View>
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/ingredientepizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/divider1"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/divider2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/fundal"
             android:text="Pizza Capriciaoasa"
@@ -66,13 +105,25 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:layout_below="@id/ingredientepizza"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:scaleY="0.03"></View>
 
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/pretpizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ingredientepizza"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/divider3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/fundal"
             android:text="Pizza Capriciaoasa"
@@ -80,13 +131,24 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
 
+            android:layout_below="@id/pretpizza"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:scaleY="0.03"></View>
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/gramajpizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/pretpizza"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/divider4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/fundal"
             android:text="Pizza Capriciaoasa"
@@ -94,6 +156,18 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:layout_below="@id/gramajpizza"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:scaleY="0.03"></View>
+
 
 
     </RelativeLayout>

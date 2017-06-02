@@ -13,13 +13,10 @@
         android:id="@+id/sus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded"
-       android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:paddingLeft="10dp"
-        android:clickable="false">
+
+
+        android:clickable="false"
+        android:paddingLeft="10dp">
 
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/adaptorcomandanume"
@@ -64,11 +61,11 @@
         <ImageView
             android:layout_width="10dp"
             android:layout_height="10dp"
-            android:layout_marginTop="5dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="14dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/down" />
 
 

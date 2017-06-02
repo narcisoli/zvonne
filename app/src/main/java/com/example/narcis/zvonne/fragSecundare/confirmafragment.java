@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.narcis.zvonne.R;
@@ -36,27 +38,37 @@ import java.util.List;
 public class confirmafragment extends Fragment {
 
 
-    View myView;
-    private Button b;
     private static confirmafragment instance;
+    View myView;
+    private ImageView b;
     private List<pizza> pizzaList;
     private EditText detalii;
+    private EditText numartelefon;
     private EditText adresa;
     private Integer i=0;
 
+    public static confirmafragment getInstance(){
+        if (instance==null)
+            instance=new confirmafragment();
+        return instance;
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.confirmafragment, container, false);
-        b=(Button)myView.findViewById(R.id.comandac2);
+        b=(ImageView) myView.findViewById(R.id.comandac2);
         detalii=(EditText)myView.findViewById(R.id.detaliic2);
+        numartelefon=(EditText)myView.findViewById(R.id.numartelefon);
         adresa=(EditText)myView.findViewById(R.id.editTextadresa);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(adresa.getText().toString()))
-                    Toast.makeText(myView.getContext(), "Adresa nu poate fi goala", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(myView.getContext(), "Trebuie sa introduci o adresa", Toast.LENGTH_SHORT).show();
+                else if (TextUtils.isEmpty(adresa.getText().toString()))
+                    Toast.makeText(myView.getContext(), "Trebuie sa introduci un numar", Toast.LENGTH_SHORT).show();
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("Esti sigur ca vrei sa comanzi?");
+                    builder.setMessage("Esti sigur ca vrei sa comanzi?"+"\nAdresa:"+adresa.getText().toString()+"\nNumar de telefon:"+numartelefon.getText().toString());
                     builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
 
 
@@ -85,7 +97,7 @@ public class confirmafragment extends Fragment {
                                 }
                             });
                             i++;
-                            coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate,1,i);
+                            coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate,1,i,numartelefon.getText().toString());
                             zv.setValue(i);
                             FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i+"").setValue(coman);
                             getFragmentManager().popBackStack();
@@ -103,11 +115,7 @@ public class confirmafragment extends Fragment {
         });
         return myView;
     }
-    public static confirmafragment getInstance(){
-        if (instance==null)
-            instance=new confirmafragment();
-        return instance;
-    }
+
     public void setpizzalist(List<pizza> pizzaLista){
         this.pizzaList=pizzaLista;
     }

@@ -13,14 +13,13 @@
 
         />
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:background="@drawable/rounded"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
         android:id="@+id/linear34"
-        android:layout_margin="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:orientation="vertical"
+       >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,100 +27,111 @@
             android:layout_marginTop="10dp">
 
             <com.example.narcis.zvonne.obiecte.otf
-                android:text="Total pizza"
+                android:id="@+id/textView65"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true"
 
-                android:id="@+id/textView65"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:text="Total pizza"
                 android:textColor="@color/white"
                 android:textSize="@dimen/normal"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                />
 
             <com.example.narcis.zvonne.obiecte.otf
-                android:text="0 lei"
+                android:id="@+id/pret1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/pret1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/normal"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp" />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="0 lei"
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <com.example.narcis.zvonne.obiecte.otf
-                android:text="Transport"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
-                android:textSize="@dimen/normal"
-                android:layout_marginStart="10dp"
                 android:id="@+id/textView6"
-                android:textColor="@color/white"
-
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <com.example.narcis.zvonne.obiecte.otf
-                android:text="Gratuit"
-                android:textSize="@dimen/normal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_blue_dark"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="10dp"
+                android:text="Transport"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/normal" />
+
+            <com.example.narcis.zvonne.obiecte.otf
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp" />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="Gratuit"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/normal" />
         </RelativeLayout>
 
 
 
     </LinearLayout>
-    <com.example.narcis.zvonne.obiecte.otf
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:id="@+id/butonsterge"
-        android:layout_height="wrap_content"
-        android:text="Sterge"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@id/linear34"
-        android:textColor="@color/white"
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/linear34"
         android:layout_marginLeft="10dp"
-        android:textSize="15sp"
-        android:background="@drawable/rounded"
-        />
-    <com.example.narcis.zvonne.obiecte.otf
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:id="@+id/butoncomanda"
-        android:layout_height="wrap_content"
-        android:text="Comanda"
-        android:layout_alignParentRight="true"
-
-        android:layout_above="@id/linear34"
-        android:textColor="@color/white"
         android:layout_marginRight="10dp"
-        android:textSize="15sp"
-        android:background="@drawable/rounded"
-        />
+        android:background="@color/fundaldark"
+        ></View>
+
+
     <ListView
-        android:layout_marginTop="5dp"
+
         android:id="@+id/listacomanda"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_above="@id/butoncomanda"
+        android:layout_below="@id/divider6"
 
+        />
+    <com.example.narcis.zvonne.obiecte.otf
+        android:id="@+id/butonsterge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linear34"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/rounded"
+        android:padding="13dp"
+        android:text="Sterge"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        />
+    <com.example.narcis.zvonne.obiecte.otf
+        android:id="@+id/butoncomanda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+android:layout_marginRight="10dp"
+       android:background="@drawable/rounded"
+        android:padding="13dp"
+        android:text="Comanda"
+        android:textColor="@color/white"
+        android:textSize="15sp"
         />
 
 
