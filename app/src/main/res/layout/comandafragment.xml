@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-
+        android:background="@color/fundaldark"
         android:orientation="vertical"
        >
 
@@ -55,7 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+
             android:layout_marginTop="10dp">
+
 
             <com.example.narcis.zvonne.obiecte.otf
                 android:id="@+id/textView6"
@@ -85,15 +87,7 @@
 
 
     </LinearLayout>
-    <View
-        android:id="@+id/divider6"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/linear34"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/fundaldark"
-        ></View>
+
 
 
     <ListView
@@ -101,7 +95,7 @@
         android:id="@+id/listacomanda"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@id/divider6"
+        android:layout_below="@id/linear34"
 
         />
     <com.example.narcis.zvonne.obiecte.otf

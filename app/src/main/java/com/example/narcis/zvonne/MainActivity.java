@@ -114,15 +114,15 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
             pizzaList.add(pizza);
         }
 
-            for(int i=0;i<pizzaList.size();i++){
-                if(pizza.getTip()==pizzaList.get(i).getTip()){
-                  int nr= pizzaList.get(i).getNrbucati();
-                    pizzaList.get(i).setNrbucati(nr+1);
-                }
+        for(int i=0;i<pizzaList.size();i++){
+            if(pizza.getTip()==pizzaList.get(i).getTip()){
+                int nr= pizzaList.get(i).getNrbucati();
+                pizzaList.get(i).setNrbucati(nr+1);
             }
+        }
         int nr=0;
         for(int i=0;i<pizzaList.size();i++){
-           nr+=pizzaList.get(i).getNrbucati();
+            nr+=pizzaList.get(i).getNrbucati();
         }
         nearby.setBadgeCount(nr);
         comandafragment.newInstance().setPizzaList(pizzaList);
@@ -162,7 +162,4 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         }
     }
 }
-
-
-
 

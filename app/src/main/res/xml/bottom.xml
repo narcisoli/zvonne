@@ -1,27 +1,28 @@
 <tabs>
     <tab
-        id="@+id/tab_meniu"
-        icon="@drawable/piz"
         barColorWhenSelected="#383547"
+        icon="@drawable/piz"
+
+        id="@+id/tab_meniu"
         title="Favorites" />
     <tab
-        id="@+id/tab_evenimente"
-        icon="@drawable/balloons"
         barColorWhenSelected="#383547"
+        icon="@drawable/balloons"
+        id="@+id/tab_evenimente"
         title="Nearby" />
     <tab
-        id="@+id/tab_acasa"
-        icon="@drawable/home"
         barColorWhenSelected="#383547"
+        icon="@drawable/home"
+        id="@+id/tab_acasa"
         title="Friends" />
     <tab
-        id="@+id/tab_comanda"
-        icon="@drawable/cumpara"
         barColorWhenSelected="#383547"
+        icon="@drawable/cumpara"
+        id="@+id/tab_comanda"
         title="Nearby" />
     <tab
-        id="@+id/tab_profil"
-        icon="@drawable/user"
         barColorWhenSelected="#383547"
+        icon="@drawable/user"
+        id="@+id/tab_profil"
         title="Friends" />
 </tabs>
