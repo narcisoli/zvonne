@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/re"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -23,6 +23,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:src="@color/white" />
+
         <me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/rating_bar"
             style="@style/Widget.MaterialRatingBar.RatingBar.Indicator"
@@ -34,8 +35,7 @@
             android:isIndicator="true"
             android:numStars="5"
             android:rating="3"
-            android:stepSize="0.5"
-            />
+            android:stepSize="0.5" />
 
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/notapizza"
@@ -50,8 +50,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/mic" />
-
-
 
 
         <View
@@ -80,6 +78,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/titlu" />
+
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
@@ -91,6 +90,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:scaleY="0.03"></View>
+
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/ingredientepizza"
             android:layout_width="wrap_content"
@@ -105,6 +105,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+
         <View
             android:id="@+id/divider3"
             android:layout_width="match_parent"
@@ -131,6 +132,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+
         <View
             android:id="@+id/divider4"
             android:layout_width="match_parent"
@@ -142,6 +144,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:scaleY="0.03"></View>
+
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/gramajpizza"
             android:layout_width="wrap_content"
@@ -156,6 +159,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
+
         <View
             android:id="@+id/divider5"
             android:layout_width="match_parent"
@@ -167,7 +171,6 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:scaleY="0.03"></View>
-
 
 
     </RelativeLayout>
@@ -185,6 +188,32 @@
         app:elevation="14dp"
         app:fabSize="normal"
         app:rippleColor="@color/fundal" />
+
+
+   <RelativeLayout
+       android:id="@+id/evalueaza"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/re"
+       android:layout_marginTop="10dp">
+       <ImageView
+        android:id="@+id/imagine1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+           android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/star" />
+       <com.example.narcis.zvonne.obiecte.otf
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+           android:layout_marginLeft="10dp"
+           android:layout_toRightOf="@id/imagine1"
+           android:text="Evalueaza"
+           android:textColor="@color/white"
+           android:textSize="@dimen/normal"/>
+   </RelativeLayout>
+
 
 </RelativeLayout>
 

@@ -24,6 +24,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -55,6 +57,19 @@ public class confirmafragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.confirmafragment, container, false);
+         final DatabaseReference zv=FirebaseDatabase.getInstance().getReference().child("Zvonne").child("totalcomenzi");
+        zv.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                i=dataSnapshot.getValue(Integer.class);
+                zv.setValue(i+1);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         b=(ImageView) myView.findViewById(R.id.comandac2);
         detalii=(EditText)myView.findViewById(R.id.detaliic2);
         numartelefon=(EditText)myView.findViewById(R.id.numartelefon);
@@ -64,7 +79,7 @@ public class confirmafragment extends Fragment {
             public void onClick(View view) {
                 if (TextUtils.isEmpty(adresa.getText().toString()))
                     Toast.makeText(myView.getContext(), "Trebuie sa introduci o adresa", Toast.LENGTH_SHORT).show();
-                else if (TextUtils.isEmpty(adresa.getText().toString()))
+                else if (TextUtils.isEmpty(numartelefon.getText().toString()))
                     Toast.makeText(myView.getContext(), "Trebuie sa introduci un numar", Toast.LENGTH_SHORT).show();
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -83,22 +98,10 @@ public class confirmafragment extends Fragment {
                             Calendar c = Calendar.getInstance();
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
                             String formattedDate = df.format(c.getTime());
-                            DatabaseReference zv=FirebaseDatabase.getInstance().getReference().child("Zvonne").child("totalcomenzi");
 
-                            zv.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    i=dataSnapshot.getValue(Integer.class);
-                                }
 
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-                            i++;
                             coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate,1,i,numartelefon.getText().toString());
-                            zv.setValue(i);
+
                             FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i+"").setValue(coman);
                             getFragmentManager().popBackStack();
                             getFragmentManager().beginTransaction().replace(R.id.container,multumimfragment.getInstance()).addToBackStack("").commit();

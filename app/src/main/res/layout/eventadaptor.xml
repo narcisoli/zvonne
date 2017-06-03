@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
-    android:layout_margin="10dp"
-    android:orientation="vertical"
+
     android:clickable="false"
-    android:padding="10dp">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <RelativeLayout
         android:id="@+id/gg"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@drawable/rounded"
-        android:padding="10dp">
+        android:padding="5dp">
 
 
         <ImageView
@@ -30,8 +30,8 @@
         <com.example.narcis.zvonne.obiecte.otf
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="9dp"
             android:layout_toRightOf="@id/img"
             android:text="Cafenea Zvonne"
             android:textColor="@color/white"
@@ -49,11 +49,11 @@
             android:textColor="@color/white"
             android:textSize="@dimen/normal" />
         <View
+            android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:id="@+id/divider"
-            android:layout_marginTop="5dp"
             android:layout_below="@id/eventdata"
+            android:layout_marginTop="5dp"
             android:background="@color/fundal" />
         <com.example.narcis.zvonne.obiecte.otf
             android:id="@+id/eventdescriere"

@@ -3,15 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    android:padding="5dp"
+
     >
 
     <RelativeLayout
         android:id="@+id/idd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+android:background="@drawable/rounded"
         android:clickable="false"
-        android:padding="10dp">
+        android:padding="5dp"
+
+     >
 
         <com.example.narcis.zvonne.obiecte.otf
 
@@ -21,8 +25,11 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:clickable="false"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="@dimen/normal" />
     <com.example.narcis.zvonne.obiecte.otf
         android:id="@+id/pizzanume"
         android:layout_width="wrap_content"
@@ -32,33 +39,27 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@id/butonpizza"
         android:clickable="false"
+        android:paddingBottom="10dp"
+        android:paddingRight="5dp"
 
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="16sp" />
+        android:paddingTop="10dp"
+
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal" />
     <com.example.narcis.zvonne.obiecte.otf
         android:id="@+id/pizzaingrediente"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/pizzanume"
         android:layout_toLeftOf="@id/butonpizza"
         android:clickable="false"
         android:textColor="@color/white"
-        android:textSize="13sp" />
-
+        android:textSize="13sp"
+        android:visibility="gone" />
     </RelativeLayout>
 
-    <View
-
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-
-        android:layout_below="@id/idd"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-
-        android:background="@color/fundaldark"
-        android:scaleY="0.7"></View>
 
 </RelativeLayout>
 

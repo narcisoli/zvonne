@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/fundal"
     android:orientation="vertical">
 
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded"
         android:padding="10dp"
         android:text="Se incarca..."
@@ -29,9 +29,9 @@
         android:layout_height="wrap_content"
        android:layout_below="@id/ofertazilei"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded"
         android:padding="10dp"
         android:text="Se incarca..."
@@ -44,10 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/descriere"
-        android:layout_marginTop="10dp"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded"
         android:padding="10dp"
         android:text="Strada Armatei Nr.53"
@@ -62,9 +63,9 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_above="@id/fab3"
-       android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp" />
+       android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab1"
@@ -72,7 +73,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:src="@drawable/add"
         app:backgroundTint="@color/fundaldark"
         app:borderWidth="0dp"
@@ -86,7 +87,7 @@
         android:layout_height="50dp"
        android:layout_above="@id/fab1"
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:src="@drawable/placeholder"
         app:backgroundTint="@color/fundaldark"
         app:borderWidth="0dp"
@@ -99,13 +100,13 @@
         android:layout_height="50dp"
         android:layout_above="@id/fab3"
         android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:src="@drawable/internet"
         app:backgroundTint="@color/fundaldark"
         app:borderWidth="0dp"
         app:elevation="14dp"
         app:fabSize="normal"
-        app:rippleColor="@color/fundal" />
+        app:rippleColor="@color/white" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab4"
@@ -113,13 +114,13 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:src="@drawable/call"
         app:backgroundTint="@color/fundaldark"
         app:borderWidth="0dp"
         app:elevation="14dp"
         app:fabSize="normal"
-        app:rippleColor="@color/fundal" />
+        app:rippleColor="@color/white" />
 
 
 

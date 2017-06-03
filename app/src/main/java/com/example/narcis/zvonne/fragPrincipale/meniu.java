@@ -27,23 +27,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class meniu extends Fragment {
+    private static meniu instance;
     View myView;
     private adaptorpizzameniu adaptor;
     private List<pizza> pizzalist = new ArrayList<>();
     private DatabaseReference zvonne;
     private ListView lista;
-    private static meniu instance;
-
     private PullToRefreshView refreshview;
-    private int nrvoturi = 0;
-    private int nota = 0;
+
+    public static meniu newInstance() {
+        if (instance == null)
+            instance = new meniu();
+        return instance;
+    }
+
+    public void refresh(){
+        pizzalist.clear();
+        zvonne = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza");
+        zvonne.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                pizzalist.clear();
+                for (DataSnapshot msgSnapshot : snapshot.getChildren()) {
+                    pizza msg = msgSnapshot.getValue(pizza.class);
+
+                    pizzalist.add(msg);
+
+
+                }
+                adaptor.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
+
+    }
 
     public void seteazaList(List eazaList) {
         this.pizzalist = eazaList;
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +81,6 @@ public class meniu extends Fragment {
         return myView;
     }
 
-
     private void listener() {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -66,7 +91,6 @@ public class meniu extends Fragment {
             }
         });
     }
-
 
     private void init() {
 
@@ -106,13 +130,6 @@ public class meniu extends Fragment {
         });
 
 
-    }
-
-
-    public static meniu newInstance() {
-        if (instance == null)
-            instance = new meniu();
-        return instance;
     }
 
 

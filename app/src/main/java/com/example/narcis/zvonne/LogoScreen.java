@@ -56,6 +56,7 @@ public class LogoScreen extends AppCompatActivity {
     private boolean bool3 = false;
     private boolean bool4 = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

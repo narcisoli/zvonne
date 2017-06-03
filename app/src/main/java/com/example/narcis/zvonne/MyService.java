@@ -25,24 +25,24 @@ import com.google.firebase.database.ValueEventListener;
 public class MyService extends Service {
 
 
-    private boolean bool=false;
+    private boolean bool = false;
 
     public MyService() {
-        Log.i("Notif","contructor");
+        Log.i("Notif", "contructor");
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i("Notif","ibind error");
+        Log.i("Notif", "ibind error");
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("Notif","start service");
-        DatabaseReference db=FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
-        Query query=db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        Log.i("Notif", "start service");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
+        Query query = db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -52,7 +52,7 @@ public class MyService extends Service {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 notif();
-                Log.i("Notif","notificare");
+                Log.i("Notif", "notificare");
             }
 
             @Override
@@ -73,18 +73,16 @@ public class MyService extends Service {
     }
 
     private void notif() {
-        if (bool) {
+
 
             Intent notificationIntent = new Intent(this, MainActivity.class);
+            notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             notificationIntent.putExtra("fragment", "comenzi");
-            PendingIntent contentIntent = PendingIntent.getActivity(this,
-                    2, notificationIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT
-            );
-            Intent resultIntent = new Intent(this, MainActivity.class);
-            resultIntent.setAction(Intent.ACTION_MAIN);
-            resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, resultIntent, 0);
+
+
+            notificationIntent.setAction(Intent.ACTION_MAIN);
+            notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             NotificationManager nm = (NotificationManager) this
                     .getSystemService(Context.NOTIFICATION_SERVICE);
@@ -105,7 +103,6 @@ public class MyService extends Service {
             Notification n = builder.build();
 
             nm.notify(1, n);
-        }
-        else bool=true;
+
     }
 }

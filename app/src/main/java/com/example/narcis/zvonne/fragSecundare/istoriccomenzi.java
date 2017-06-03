@@ -24,7 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -35,6 +37,11 @@ public class istoriccomenzi extends Fragment {
     private List<coman> comanList=new ArrayList<>();
     private adaptoristoric a;
 
+    public static istoriccomenzi getInstance(){
+        if (instance==null)
+            instance=new istoriccomenzi();
+        return instance;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -56,6 +63,7 @@ public class istoriccomenzi extends Fragment {
 
 
                 }
+
                 a.notifyDataSetChanged();
             }
 
@@ -67,11 +75,6 @@ public class istoriccomenzi extends Fragment {
 
 
         return myView;
-    }
-    public static istoriccomenzi getInstance(){
-        if (instance==null)
-            instance=new istoriccomenzi();
-        return instance;
     }
 
 }

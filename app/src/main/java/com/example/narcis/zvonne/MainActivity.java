@@ -24,41 +24,43 @@ import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabSelectListener;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements pizza1.comunicare,comandafragment.trimitebadge {
+public class MainActivity extends AppCompatActivity implements pizza1.comunicare, comandafragment.trimitebadge {
 
 
-
-
-    public  BottomBar bottomBar;
+    public BottomBar bottomBar;
     private ViewPager viewPager;
-    private List<pizza> pizzaList=new ArrayList<>();
+    private List<pizza> pizzaList = new ArrayList<>();
     private BottomBarTab nearby;
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("Notif","pornim service");
-        startService(new Intent(this,MyService.class));
+        Log.i("Notif", "pornim service");
+        startService(new Intent(this, MyService.class));
 
-        if(getIntent().getExtras()!=null)
-        {
-            viewPager.setCurrentItem(4);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
-        }
+
         init();
-        nearby= bottomBar.getTabWithId(R.id.tab_comanda);
+        nearby = bottomBar.getTabWithId(R.id.tab_comanda);
         ascultabutoane();
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        bottomBar.selectTabAtPosition(2,true);
+        bottomBar.selectTabAtPosition(2, true);
+
 
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+
+        super.onNewIntent(intent);
+
+            viewPager.setCurrentItem(4);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
+
+    }
 
 
     private void ascultabutoane() {
@@ -66,23 +68,34 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                if(getSupportFragmentManager().getBackStackEntryCount()!=0)
+                if (getSupportFragmentManager().getBackStackEntryCount() != 0)
                     getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.container)).commit();
-                switch(tabId){
-                    case R.id.tab_meniu:viewPager.setCurrentItem(0);break;
-                    case R.id.tab_evenimente:viewPager.setCurrentItem(1);break;
-                    case R.id.tab_acasa:viewPager.setCurrentItem(2);break;
-                    case R.id.tab_comanda:viewPager.setCurrentItem(3);break;
-                    case R.id.tab_profil:viewPager.setCurrentItem(4);break;
+                switch (tabId) {
+                    case R.id.tab_meniu:
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.tab_evenimente:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.tab_acasa:
+                        viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.tab_comanda:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.tab_profil:
+                        viewPager.setCurrentItem(4);
+                        break;
                 }
             }
         });
 
     }
+
     private void init() {
         FirebaseDatabase.getInstance().getReference().child("Zvonne").child("totalcomenzi").setValue(0);
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-        viewPager=(ViewPager)findViewById(R.id.viewPager) ;
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -91,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
 
             @Override
             public void onPageSelected(int position) {
-                bottomBar.selectTabAtPosition(position,true);
+                bottomBar.selectTabAtPosition(position, true);
             }
 
             @Override
@@ -104,29 +117,28 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
 
     @Override
     public void trimitemesaj(pizza pizza) {
-        boolean ok=true;
-        for(int i=0;i<pizzaList.size();i++){
-            if(pizza.getTip()==pizzaList.get(i).getTip()){
-                ok=false;
+        boolean ok = true;
+        for (int i = 0; i < pizzaList.size(); i++) {
+            if (pizza.getTip() == pizzaList.get(i).getTip()) {
+                ok = false;
             }
         }
-        if(ok){
+        if (ok) {
             pizzaList.add(pizza);
         }
 
-        for(int i=0;i<pizzaList.size();i++){
-            if(pizza.getTip()==pizzaList.get(i).getTip()){
-                int nr= pizzaList.get(i).getNrbucati();
-                pizzaList.get(i).setNrbucati(nr+1);
+        for (int i = 0; i < pizzaList.size(); i++) {
+            if (pizza.getTip() == pizzaList.get(i).getTip()) {
+                int nr = pizzaList.get(i).getNrbucati();
+                pizzaList.get(i).setNrbucati(nr + 1);
             }
         }
-        int nr=0;
-        for(int i=0;i<pizzaList.size();i++){
-            nr+=pizzaList.get(i).getNrbucati();
+        int nr = 0;
+        for (int i = 0; i < pizzaList.size(); i++) {
+            nr += pizzaList.get(i).getNrbucati();
         }
         nearby.setBadgeCount(nr);
         comandafragment.newInstance().setPizzaList(pizzaList);
-
 
 
     }
@@ -145,14 +157,20 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
 
         @Override
         public Fragment getItem(int pos) {
-            switch(pos) {
+            switch (pos) {
 
-                case 0:return meniu.newInstance();
-                case 1:return eventfragment.newInstance();
-                case 2: return menufragment.newInstance();
-                case 3: return comandafragment.newInstance();
-                case 4: return profilfragment.newInstance();
-                default: return menufragment.newInstance();
+                case 0:
+                    return meniu.newInstance();
+                case 1:
+                    return eventfragment.newInstance();
+                case 2:
+                    return menufragment.newInstance();
+                case 3:
+                    return comandafragment.newInstance();
+                case 4:
+                    return profilfragment.newInstance();
+                default:
+                    return menufragment.newInstance();
             }
         }
 
