@@ -135,7 +135,6 @@ public class pizza1 extends Fragment {
                 .into(imageView);
         numepizza.setText(pizza.getTip());
         notapizza.setText("( nota "+String.format("%.2f",pizza.getNota())+" din "+pizza.getNrvoturi()+" voturi )");
-        Toast.makeText(myView.getContext(),pizza.getNota()+"", Toast.LENGTH_SHORT).show();
         gramajpizza.setText(pizza.getGramaj() + "");
         pretpizza.setText(pizza.getPret()+" lei");
         ingredientepizza.setText(pizza.getIngrediente());

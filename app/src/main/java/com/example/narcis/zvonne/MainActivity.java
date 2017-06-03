@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.narcis.zvonne.fragPrincipale.comandafragment;
 import com.example.narcis.zvonne.fragPrincipale.eventfragment;
@@ -56,10 +57,16 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
     protected void onNewIntent(Intent intent) {
 
         super.onNewIntent(intent);
-
+        String a = "";
+        try {
+            a = intent.getStringExtra("fragment");
+        } catch (Exception ex) {
+            Toast.makeText(this, "pl", Toast.LENGTH_SHORT).show();
+        }
+        if (a != "") {
             viewPager.setCurrentItem(4);
             getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
-
+        }
     }
 
 
