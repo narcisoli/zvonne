@@ -55,6 +55,7 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza>  {
         }
       loc = getItem(position);
         if (loc != null) {
+
             TextView tip=(TextView)view.findViewById(R.id.pizzanume);
             TextView ingrediente=(TextView)view.findViewById(R.id.pizzaingrediente);
 
