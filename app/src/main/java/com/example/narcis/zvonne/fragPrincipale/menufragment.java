@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +40,9 @@ public class menufragment extends Fragment {
 
 
     private static menufragment instance;
-    boolean aBoolean = false;
-    FloatingActionButton call;
-    FloatingActionButton browser;
-    FloatingActionButton gps;
+    CardView call;
+    CardView browser;
+    CardView gps;
     FloatingActionButton fab;
     String of = "";
     String desc = "";
@@ -63,33 +63,13 @@ public class menufragment extends Fragment {
         oferta = (otf) myView.findViewById(R.id.ofertazilei);
         descriere = (otf) myView.findViewById(R.id.descriere);
 
-        ImageView image = (ImageView) myView.findViewById(R.id.imageView25);
-        Drawable myDrawable = getResources().getDrawable(R.drawable.zvonne);
-        call = (FloatingActionButton) myView.findViewById(R.id.fab4);
-        browser = (FloatingActionButton) myView.findViewById(R.id.fab2);
-        gps = (FloatingActionButton) myView.findViewById(R.id.fab3);
-        fab = (FloatingActionButton) myView.findViewById(R.id.fab1);
+        call = (CardView) myView.findViewById(R.id.cardsuna);
+        browser = (CardView) myView.findViewById(R.id.cardfacebook);
+        gps = (CardView) myView.findViewById(R.id.cardnavigheaza);
 
 
-        browser.setVisibility(View.GONE);
-        gps.setVisibility(View.GONE);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (aBoolean) {
-                    fab.setImageDrawable(getResources().getDrawable(R.drawable.add));
-                    browser.setVisibility(View.GONE);
-                    gps.setVisibility(View.GONE);
-                    aBoolean = false;
-                } else {
-                    fab.setImageDrawable(getResources().getDrawable(R.drawable.back));
-                    browser.setVisibility(View.VISIBLE);
-                    gps.setVisibility(View.VISIBLE);
-                    aBoolean = true;
-                }
-            }
-        });
+
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,8 +96,7 @@ public class menufragment extends Fragment {
             }
         });
 
-        Bitmap myLogo = ((BitmapDrawable) myDrawable).getBitmap();
-        image.setImageBitmap(myLogo);
+
         oferta.setText(of);
         descriere.setText(desc);
 

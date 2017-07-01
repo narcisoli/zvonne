@@ -26,7 +26,7 @@ public class otf extends android.support.v7.widget.AppCompatTextView {
     }
 
     private void applyCustomFont(Context context) {
-        Typeface customFont = Typeface.createFromAsset(context.getAssets(),"fonts/material.ttf");
-        this.setTypeface(customFont);
+      //  Typeface customFont = Typeface.createFromAsset(context.getAssets(),"fonts/material.ttf");
+     //   this.setTypeface(customFont);
     }
 }

@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,8 @@ public class comandafragment extends Fragment{
     private FragmentManager f;
     private trimitebadge trim;
     private Button buton;
-    private TextView butoncomanda;
-    private TextView butonsterge;
+    private CardView butoncomanda;
+    private CardView butonsterge;
 
     public static comandafragment newInstance() {
         if (instance==null)
@@ -124,8 +125,8 @@ public class comandafragment extends Fragment{
 
     private void init() {
         f=getActivity().getFragmentManager();
-        butonsterge=(TextView)myView.findViewById(R.id.butonsterge);
-        butoncomanda=(TextView)myView.findViewById(R.id.butoncomanda);
+        butonsterge=(CardView)myView.findViewById(R.id.cardsterge);
+        butoncomanda=(CardView)myView.findViewById(R.id.cardconfirma);
         listView =(ListView) myView.findViewById(R.id.listacomanda);
 
         adaptor=new adaptorcomanda(myView.getContext(),R.layout.adaptorcomanda,pizzaList);

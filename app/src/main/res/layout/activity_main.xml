@@ -12,7 +12,7 @@
         android:id="@+id/containerfull"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rounded"
+        android:background="@color/fundaldark"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -22,7 +22,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/roundedsus">
+            android:background="@color/fundaldark">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -62,17 +62,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
-                android:scaleX=".8"
-                android:scaleY=".8"
-
+                android:background="@color/fundaldark"
                 app:bb_activeTabColor="#FFFFFF"
                 app:bb_badgesHideWhenActive="false"
                 app:bb_behavior="iconsOnly"
-                app:bb_inActiveTabAlpha="0.5"
+                app:bb_inActiveTabAlpha="0.6"
                 app:bb_inActiveTabColor="#FFFFFF"
                 app:bb_longPressHintsEnabled="true"
                 app:bb_tabXmlResource="@xml/bottom"
+                app:paddingStart="20dp"
                 app:theme="@style/BB_BottomBarItem_Fixed.TitleAppearance"
                 />
 

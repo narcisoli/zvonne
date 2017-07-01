@@ -4,131 +4,217 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fundal"
-  >
+    android:background="@color/fundal">
+    />
 
 
 
 
 
-        />
-    <LinearLayout
+
+    <android.support.v7.widget.CardView
         android:id="@+id/linear34"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
-        android:background="@drawable/rounded"
-        android:orientation="vertical"
-       >
+        app:cardBackgroundColor="@color/fundaldark">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical"
+            android:padding="5dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.example.narcis.zvonne.obiecte.otf
+                    android:id="@+id/textView65"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="Total pizza"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <com.example.narcis.zvonne.obiecte.otf
+                    android:id="@+id/pret1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="0 lei"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+
+                android:layout_marginTop="10dp">
+
+
+                <com.example.narcis.zvonne.obiecte.otf
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Transport"
+
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <com.example.narcis.zvonne.obiecte.otf
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="Gratuit"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardsterge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_above="@id/linear34"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/fundaldark"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:id="@+id/shar3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_delete_white_36dp"
+                android:tint="@color/white" />
 
             <com.example.narcis.zvonne.obiecte.otf
-                android:id="@+id/textView65"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp"
-                android:text="Total pizza"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/shar3"
+                android:text="Sterge cosul"
                 android:textColor="@color/white"
-                android:textSize="@dimen/normal"
-               />
+                android:textSize="18sp" />
 
-            <com.example.narcis.zvonne.obiecte.otf
-                android:id="@+id/pret1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+            <ImageView
+                android:id="@+id/sageata3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="0 lei"
-                android:textColor="@color/white"
-                android:textSize="@dimen/normal" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/right" />
         </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardconfirma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/cardsterge"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/fundaldark"
+        app:cardElevation="5dp">
+
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
 
-            android:layout_marginTop="10dp">
-
+            <ImageView
+                android:id="@+id/shar2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/marker"
+                android:tint="@color/white" />
 
             <com.example.narcis.zvonne.obiecte.otf
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="28dp"
-                android:layout_marginStart="10dp"
-                android:text="Transport"
-
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/shar2"
+                android:text="Finalizeaza cosul"
                 android:textColor="@color/white"
-                android:textSize="@dimen/normal" />
+                android:textSize="18sp" />
 
-            <com.example.narcis.zvonne.obiecte.otf
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+            <ImageView
+                android:id="@+id/sageata2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="Gratuit"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textSize="@dimen/normal" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/right" />
         </RelativeLayout>
 
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/cardconfirma"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardBackgroundColor="@color/fundaldark"
+        app:cardElevation="2dp">
 
-
-    </LinearLayout>
-
-
-
+    </android.support.v7.widget.CardView>
     <ListView
 
         android:id="@+id/listacomanda"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@id/linear34"
-
+        android:layout_above="@id/divider"
+        android:layout_marginBottom="5dp"
+        android:divider="@color/fundal"
+        android:dividerHeight="1dp"
+       android:footerDividersEnabled="false"
+        android:headerDividersEnabled="true"
         />
-    <com.example.narcis.zvonne.obiecte.otf
-        android:id="@+id/butonsterge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/linear34"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/rounded"
-        android:padding="13dp"
-        android:text="Sterge"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        />
-    <com.example.narcis.zvonne.obiecte.otf
-        android:id="@+id/butoncomanda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-android:layout_marginRight="10dp"
-       android:background="@drawable/rounded"
-        android:padding="13dp"
-        android:text="Comanda"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        />
-
 
 
 </RelativeLayout>

@@ -1,28 +1,27 @@
 <tabs>
-    <tab
-        barColorWhenSelected="#383547"
-        icon="@drawable/piz"
-
+     <tab
+        barColorWhenSelected="color/fundaldark"
+        icon="@drawable/ic_restaurant_menu_white_18dp"
         id="@+id/tab_meniu"
         title="Favorites" />
     <tab
-        barColorWhenSelected="#383547"
-        icon="@drawable/balloons"
+        barColorWhenSelected="@color/fundaldark"
+        icon="@drawable/ic_event_note_white_18dp"
         id="@+id/tab_evenimente"
         title="Nearby" />
     <tab
-        barColorWhenSelected="#383547"
-        icon="@drawable/home"
+        barColorWhenSelected="color/fundaldark"
+        icon="@drawable/ic_home_white_18dp"
         id="@+id/tab_acasa"
         title="Friends" />
     <tab
-        barColorWhenSelected="#383547"
-        icon="@drawable/cumpara"
+        barColorWhenSelected="color/fundaldark"
+        icon="@drawable/ic_shopping_cart_white_18dp"
         id="@+id/tab_comanda"
         title="Nearby" />
     <tab
-        barColorWhenSelected="#383547"
-        icon="@drawable/user"
+        barColorWhenSelected="color/fundaldark"
+        icon="@drawable/ic_account_circle_white_18dp"
         id="@+id/tab_profil"
         title="Friends" />
 </tabs>
