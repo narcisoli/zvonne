@@ -6,15 +6,21 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.narcis.zvonne.R;
+import com.example.narcis.zvonne.fragSecundare.pizza.pizza2;
 import com.example.narcis.zvonne.obiecte.blur;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
@@ -35,31 +41,52 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by Narcis on 9/7/2016.
  */
-public class adaptorpizzameniu extends ArrayAdapter<pizza>  {
+public class adaptorpizzameniu extends ArrayAdapter<pizza> {
 
-    public static List<pizza> pizzaList = new ArrayList<>();
+    private final FragmentManager supportFragmentManager;
+    public List<pizza> pizzaList = new ArrayList<>();
+    adaptorCallBack adaptorCallBack;
     private int layoutResource;
     private pizza loc;
     private View view;
+    private RelativeLayout relativeLayout;
+    private RelativeLayout rel3;
+    private RelativeLayout rel2;
 
-    public adaptorpizzameniu(Context context, int layoutResource, List<pizza> pizzalist) {
+    public adaptorpizzameniu(Context context, int layoutResource, List<pizza> pizzalist, adaptorCallBack adaptorCallBack, FragmentManager supportFragmentManager) {
         super(context, layoutResource, pizzalist);
         this.layoutResource = layoutResource;
+        this.adaptorCallBack = adaptorCallBack;
+        this.pizzaList = pizzalist;
+        this.supportFragmentManager=supportFragmentManager;
     }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-         view = convertView;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        view = convertView;
         if (view == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             view = layoutInflater.inflate(layoutResource, null);
         }
-      loc = getItem(position);
+        loc = getItem(position);
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.rel1);
+        relativeLayout.setTag(position);
+        rel2 = (RelativeLayout) view.findViewById(R.id.rel2);
+
+        rel3 = (RelativeLayout) view.findViewById(R.id.rel3);
         if (loc != null) {
 
-            TextView tip=(TextView)view.findViewById(R.id.pizzanume);
-            TextView ingrediente=(TextView)view.findViewById(R.id.pizzaingrediente);
 
-            final ImageView imageView=(ImageView) view.findViewById(R.id.imaginepizza);
+
+
+            TextView tip = (TextView) view.findViewById(R.id.pizzanume);
+            TextView ingrediente = (TextView) view.findViewById(R.id.pizzaingrediente);
+
+
+            final ImageView imageView = (ImageView) view.findViewById(R.id.imaginepizza);
+            star(loc);
+
+
             StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagini").child("Pizza").child(loc.getTip() + ".jpg");
             final Transformation blurTransformation = new Transformation() {
                 @Override
@@ -104,14 +131,102 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza>  {
             });
             tip.setText(loc.getTip());
             ingrediente.setText(loc.getIngrediente());
-            TextView b1=(TextView) view.findViewById(R.id.butonpizza);
-            b1.setText(loc.getPret()+" lei");
+            TextView b1 = (TextView) view.findViewById(R.id.butonpizza);
+            b1.setText(loc.getPret() + " lei");
 
         }
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adaptorCallBack.adauga(pizzaList.get(position));
+            }
+        });
+        rel2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               pizza2.getInstance().setPizza(pizzaList.get(position));
+               supportFragmentManager.beginTransaction().replace(R.id.container,pizza2.getInstance()).addToBackStack("").commit();
+            }
+        });
 
         return view;
     }
 
+    private void star(pizza loc) {
+        ImageView star1 = (ImageView) view.findViewById(R.id.star1);
+        ImageView star2 = (ImageView) view.findViewById(R.id.star2);
+        ImageView star3 = (ImageView) view.findViewById(R.id.star3);
+        ImageView star4 = (ImageView) view.findViewById(R.id.star4);
+        ImageView star5 = (ImageView) view.findViewById(R.id.star5);
+        float vot = loc.getNota();
+        Log.i("nota", vot + "");
+        if (vot < 1) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 1 && vot < 1.25) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 1.25 && vot < 1.75) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.starjum));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 1.75 && vot < 2.25) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 2.25 && vot < 2.75) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.starjum));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 2.75 && vot < 3.25) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 3.25 && vot < 3.75) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.starjum));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 3.75 && vot < 4.25) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star0));
+        } else if (vot >= 4.25 && vot < 4.75) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.starjum));
+        } else if (vot >= 4.75 && vot < 5.75) {
+            star1.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star2.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star3.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star4.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+            star5.setImageDrawable(view.getResources().getDrawable(R.drawable.star1));
+        }
+
+    }
+
+    public interface adaptorCallBack {
+        void adauga(pizza pizza);
+    }
 
 
 }

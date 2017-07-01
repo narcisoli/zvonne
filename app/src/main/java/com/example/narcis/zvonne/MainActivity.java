@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.narcis.zvonne.adaptori.adaptorpizzameniu;
 import com.example.narcis.zvonne.fragPrincipale.comandafragment;
 import com.example.narcis.zvonne.fragPrincipale.eventfragment;
 import com.example.narcis.zvonne.fragPrincipale.meniu;
@@ -28,7 +29,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements pizza1.comunicare, comandafragment.trimitebadge {
+public class MainActivity extends AppCompatActivity implements pizza1.comunicare, comandafragment.trimitebadge,meniu.OnHeadlineSelectedListener {
 
 
     public BottomBar bottomBar;
@@ -124,6 +125,20 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
 
     @Override
     public void trimitemesaj(pizza pizza) {
+
+
+
+    }
+
+    @Override
+    public void send(int i) {
+        nearby.setBadgeCount(i);
+    }
+
+
+
+    @Override
+    public void mesajpizza(pizza pizza) {
         boolean ok = true;
         for (int i = 0; i < pizzaList.size(); i++) {
             if (pizza.getTip() == pizzaList.get(i).getTip()) {
@@ -146,13 +161,6 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         }
         nearby.setBadgeCount(nr);
         comandafragment.newInstance().setPizzaList(pizzaList);
-
-
-    }
-
-    @Override
-    public void send(int i) {
-        nearby.setBadgeCount(i);
     }
 
 

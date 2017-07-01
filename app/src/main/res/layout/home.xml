@@ -41,7 +41,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/normal"
-                android:textStyle="bold" />
+                 />
 
         </RelativeLayout>
 
