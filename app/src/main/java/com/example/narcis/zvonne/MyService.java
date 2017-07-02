@@ -81,9 +81,28 @@ public class MyService extends Service {
         });
     }
 
-    private void notif(coman c) {
+    private void notif(coman loc) {
+        String a="";
 
+        if (loc.getStatus() == 2) {
+            a="Comanda a fost acceptata!";
+        }
+        if (loc.getStatus() == 3) {
 
+            a="Comanda a intrat la bucatarie";
+        }
+        if (loc.getStatus() == 4) {
+
+            a="Comada a plecat spre dumneavoastra";
+        }
+        if (loc.getStatus() == 5) {
+
+            a="Comanda a ajuns la destinatie";
+        }
+        if (loc.getStatus() == 0) {
+
+            a="Comanda a fost anulata";
+        }
         Intent notificationIntent = new Intent(this, MainActivity.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         notificationIntent.putExtra("fragment", "comenzi");
@@ -91,7 +110,7 @@ public class MyService extends Service {
 
         notificationIntent.setAction(Intent.ACTION_MAIN);
         notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT );
 
         NotificationManager nm = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
@@ -101,12 +120,11 @@ public class MyService extends Service {
         Resources res = this.getResources();
         builder.setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.zvonne)
-                .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.zvonne))
-                .setTicker("Ticker")
+                .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.zvonneicon))
                 .setWhen(System.currentTimeMillis())
                 .setAutoCancel(true)
                 .setContentTitle("Zvonne App")
-                .setContentText(c.getText());
+                .setContentText(a);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         builder.setSound(alarmSound);
         Notification n = builder.build();

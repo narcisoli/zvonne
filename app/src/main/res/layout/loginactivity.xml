@@ -32,16 +32,7 @@
         android:visibility="gone"
         app:theme="@style/com_facebook_button_share" />
 
-    <ImageView
 
-        android:id="@+id/imagegoogle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/iamgefacebook"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="14dp"
-        android:src="@drawable/google"
-        android:visibility="gone" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/iamgefacebook"
@@ -67,7 +58,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-               android:src="@drawable/facebook"
                 android:text="Conecteaza-te prin facebook"
                 android:textColor="@color/white"
                 android:textSize="@dimen/normal" />

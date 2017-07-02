@@ -2,46 +2,31 @@ package com.example.narcis.zvonne.adaptori;
 
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.media.Image;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.fragPrincipale.meniu;
-import com.example.narcis.zvonne.fragSecundare.pizza.pizza2;
-import com.example.narcis.zvonne.obiecte.blur;
+import com.example.narcis.zvonne.fragSecundare.pizza2;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -58,6 +43,7 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
     private RelativeLayout relativeLayout;
     private RelativeLayout rel3;
     private RelativeLayout rel2;
+
 
     public adaptorpizzameniu(Context context, int layoutResource, List<pizza> pizzalist, adaptorCallBack adaptorCallBack, FragmentManager supportFragmentManager) {
         super(context, layoutResource, pizzalist);

@@ -86,7 +86,7 @@
                             android:id="@+id/ingrediente"
                             android:layout_width="15dp"
                             android:layout_height="15dp"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="3dp"
                             android:src="@drawable/ingre"
                             android:tint="@color/white" />
 

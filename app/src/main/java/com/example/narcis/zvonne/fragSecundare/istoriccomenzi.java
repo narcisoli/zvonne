@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.narcis.zvonne.R;
@@ -33,7 +34,7 @@ import java.util.List;
 public class istoriccomenzi extends Fragment {
     private static istoriccomenzi instance;
     View myView;
-    private ListView lista;
+    private GridView lista;
     private List<coman> comanList=new ArrayList<>();
     private adaptoristoric a;
 
@@ -46,7 +47,8 @@ public class istoriccomenzi extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         myView=inflater.inflate(R.layout.istoriccomenzi,container,false);
-        lista=(ListView)myView.findViewById(R.id.listacomenzi);
+        lista=(GridView)myView.findViewById(R.id.listacomenzi);
+
          a=new adaptoristoric(myView.getContext(),R.layout.adaptoristoric,comanList);
         lista.setAdapter(a);
 
@@ -63,7 +65,7 @@ public class istoriccomenzi extends Fragment {
 
 
                 }
-
+                Collections.reverse(comanList);
                 a.notifyDataSetChanged();
             }
 

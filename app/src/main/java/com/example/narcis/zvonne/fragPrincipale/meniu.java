@@ -6,22 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.narcis.zvonne.MainActivity;
 import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.adaptori.adaptorpizzameniu;
-import com.example.narcis.zvonne.fragSecundare.pizza.pizza1;
-import com.example.narcis.zvonne.fragSecundare.pizza.pizza2;
-import com.example.narcis.zvonne.fragSecundare.pizza.pizzadetalii;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import com.song.refresh_view.PullToRefreshView;
 
 import java.util.ArrayList;

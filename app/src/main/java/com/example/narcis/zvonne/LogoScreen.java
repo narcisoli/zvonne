@@ -14,9 +14,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.narcis.zvonne.fragPrincipale.eventfragment;
@@ -61,13 +64,17 @@ public class LogoScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logo);
+        final RelativeLayout rel=(RelativeLayout)findViewById(R.id.rel);
 
-       Thread th= new Thread(new Runnable() {
+       final Thread th= new Thread(new Runnable() {
             public void run() {
                 while (true) {
+
                     if (bool1 && bool2 && bool3 && bool4)
                         break;
                 }
+
+
                 startActivity(new Intent(LogoScreen.this, login.class));
                 finish();
 
@@ -79,24 +86,22 @@ public class LogoScreen extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        if (!isNetworkAvailable()) {
 
 
-            }
-        }, 5000);
+            Snackbar snackbar = Snackbar
+                    .make(rel, "Nu exista internet", Snackbar.LENGTH_LONG);
+            snackbar.show();
+
+
+        }
         salveazaoferta();
         salveazadescrierea();
         saveevent();
         savemeniu();
 
 
-        if (!isNetworkAvailable()) {
-            Toast.makeText(this, "No network connection",
-                    Toast.LENGTH_LONG).show();
-        }
+
 
 
     }

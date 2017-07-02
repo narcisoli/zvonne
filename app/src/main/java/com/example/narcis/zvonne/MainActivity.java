@@ -8,28 +8,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.narcis.zvonne.adaptori.adaptorpizzameniu;
 import com.example.narcis.zvonne.fragPrincipale.comandafragment;
 import com.example.narcis.zvonne.fragPrincipale.eventfragment;
 import com.example.narcis.zvonne.fragPrincipale.meniu;
 import com.example.narcis.zvonne.fragPrincipale.menufragment;
 import com.example.narcis.zvonne.fragPrincipale.profilfragment;
 import com.example.narcis.zvonne.fragSecundare.istoriccomenzi;
-import com.example.narcis.zvonne.fragSecundare.pizza.pizza1;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.google.firebase.database.FirebaseDatabase;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnTabSelectListener;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements pizza1.comunicare, comandafragment.trimitebadge,meniu.OnHeadlineSelectedListener {
+public class MainActivity extends AppCompatActivity implements  comandafragment.trimitebadge,meniu.OnHeadlineSelectedListener {
 
 
     public BottomBar bottomBar;
@@ -119,10 +115,15 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
     }
 
     @Override
-    public void trimitemesaj(pizza pizza) {
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String a="";
+        a=intent.getExtras().getString("fragment");
 
-
-
+        if(a!=""){
+            viewPager.setCurrentItem(4);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
+        }
     }
 
     @Override

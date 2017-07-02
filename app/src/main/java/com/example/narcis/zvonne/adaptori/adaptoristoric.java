@@ -61,23 +61,23 @@ public class adaptoristoric extends ArrayAdapter<coman> {
                 status.setText("Neconfirmata");
             if (loc.getStatus() == 2) {
                 status.setText("Confirmata");
-                status.setTextColor(Color.CYAN);
+
             }
             if (loc.getStatus() == 3) {
                 status.setText("La cuptor");
-                status.setTextColor(Color.YELLOW);
+
             }
             if (loc.getStatus() == 4) {
                 status.setText("Pe drum");
-                status.setTextColor(Color.GREEN);
+
             }
             if (loc.getStatus() == 5) {
                 status.setText("Finalizata");
-                status.setTextColor(Color.GREEN);
+
             }
             if (loc.getStatus() == 0) {
                 status.setText("Anulata");
-                status.setTextColor(Color.RED);
+
             }
 
         }

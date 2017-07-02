@@ -2,8 +2,12 @@ package com.example.narcis.zvonne.fragSecundare;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -63,7 +67,7 @@ public class confirmafragment extends Fragment {
         adresa=(EditText)myView.findViewById(R.id.editTextadresa);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 if (TextUtils.isEmpty(adresa.getText().toString()))
                     Toast.makeText(myView.getContext(), "Trebuie sa introduci o adresa", Toast.LENGTH_SHORT).show();
                 else if (TextUtils.isEmpty(numartelefon.getText().toString()))
@@ -75,20 +79,28 @@ public class confirmafragment extends Fragment {
 
 
                         public void onClick(DialogInterface dialog, int id) {
-                            String a="";
-                            for (int i=0;i<pizzaList.size();i++)
-                                a+=pizzaList.get(i).getNrbucati()+"x "+pizzaList.get(i).getTip()+"\n";
 
-                            a+="Adresa: "+adresa.getText().toString();
-                            if (detalii.getText().toString().trim()!="")
-                                a+="\nDetalii: "+detalii.getText().toString();
+                            if(isNetworkAvailable()) {
+                                String a = "";
+                                for (int i = 0; i < pizzaList.size(); i++)
+                                    a += pizzaList.get(i).getNrbucati() + "x " + pizzaList.get(i).getTip() + "\n";
 
-                            long i=System.currentTimeMillis();
-                            coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),1,i,numartelefon.getText().toString());
+                                a += "Adresa: " + adresa.getText().toString();
+                                if (detalii.getText().toString().trim() != "")
+                                    a += "\nDetalii: " + detalii.getText().toString();
 
-                            FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i+"").setValue(coman);
-                            getFragmentManager().popBackStack();
-                            getFragmentManager().beginTransaction().replace(R.id.container,multumimfragment.getInstance()).addToBackStack("").commit();
+                                long i = System.currentTimeMillis();
+                                coman coman = new coman(a, FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), 1, i, numartelefon.getText().toString());
+
+                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i + "").setValue(coman);
+                                getFragmentManager().popBackStack();
+                                getFragmentManager().beginTransaction().replace(R.id.container, multumimfragment.getInstance()).addToBackStack("").commit();
+                            }
+                            else {
+                                Snackbar snackbar = Snackbar
+                                        .make(view, "Nu exista internet", Snackbar.LENGTH_LONG);
+                                snackbar.show();
+                            }
 
                         }
                     });
@@ -104,5 +116,11 @@ public class confirmafragment extends Fragment {
 
     public void setpizzalist(List<pizza> pizzaLista){
         this.pizzaList=pizzaLista;
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
     }
 }

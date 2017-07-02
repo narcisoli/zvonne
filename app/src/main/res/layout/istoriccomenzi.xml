@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/fundal">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/fundal"
+    android:orientation="vertical">
 
-    <ListView
+    <GridView
+        android:id="@+id/listacomenzi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listacomenzi"/>
+        android:divider="@color/fundal"
+        android:numColumns="2"/>
 
 </RelativeLayout>
