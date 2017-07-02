@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Narcis on 9/7/2016.
  */
-public class adaptorcomanda extends ArrayAdapter<pizza>  {
+public class  adaptorcomanda extends ArrayAdapter<pizza>  {
 
 
     private int layoutResource;

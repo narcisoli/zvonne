@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.obiecte.blur;
 import com.example.narcis.zvonne.obiecte.eveniment;
 import com.example.narcis.zvonne.obiecte.mesaj;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -51,7 +53,7 @@ public class adaptoreveniment extends ArrayAdapter<eveniment> {
     private View view;
     private TextView eventdescriere;
     private TextView eventdata;
-
+    private TextView eventnume;
 
 
     public adaptoreveniment(Context context, int layoutResource, List<eveniment> pizzalist) {
@@ -77,13 +79,17 @@ public class adaptoreveniment extends ArrayAdapter<eveniment> {
 
         if (loc != null) {
 
-            eventdescriere = (TextView) view.findViewById(R.id.eventdescriere);
+
             eventdata = (TextView) view.findViewById(R.id.eventdata);
+            eventnume = (TextView) view.findViewById(R.id.eventnume);
             eventdata.setText(loc.getData());
-            eventdescriere.setText(loc.getNume());
+
+            eventnume.setText(loc.getNume());
+
 
 
         }
+
 
         return view;
     }

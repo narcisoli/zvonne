@@ -38,10 +38,22 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
     private BottomBarTab nearby;
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String receive="";
+        try {
+            receive=getIntent().getExtras().getString("fragment");
+        }catch (Exception ex){};
+        if(receive!="")
+            Toast.makeText(this, "daad", Toast.LENGTH_SHORT).show();
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("Notif", "pornim service");
+
+
         startService(new Intent(this, MyService.class));
 
 
@@ -52,22 +64,6 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         bottomBar.selectTabAtPosition(2, true);
 
 
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-
-        super.onNewIntent(intent);
-        String a = "";
-        try {
-            a = intent.getStringExtra("fragment");
-        } catch (Exception ex) {
-            Toast.makeText(this, "pl", Toast.LENGTH_SHORT).show();
-        }
-        if (a != "") {
-            viewPager.setCurrentItem(4);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, istoriccomenzi.getInstance()).addToBackStack("").commit();
-        }
     }
 
 

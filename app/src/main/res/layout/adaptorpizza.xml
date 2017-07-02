@@ -12,7 +12,8 @@
         android:layout_margin="5dp"
         android:clickable="false"
         app:cardBackgroundColor="@color/fundaldark"
-        app:cardElevation="50dp"
+
+        app:cardElevation="2dp"
 
         >
 
@@ -195,8 +196,8 @@
 
                     <ImageView
                         android:id="@+id/i1"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_add_shopping_cart_white_36dp" />
@@ -222,8 +223,8 @@
 
                     <ImageView
                         android:id="@+id/i2"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_comment_white_36dp" />
@@ -246,8 +247,8 @@
 
                     <ImageView
                         android:id="@+id/i3"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_star_white_36dp" />

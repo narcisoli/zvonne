@@ -7,46 +7,52 @@
     android:background="@color/fundal">
 
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/relid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_margin="5dp"
-        android:background="@drawable/rounded"
-        android:padding="5dp">
+        android:padding="5dp"
+        app:cardBackgroundColor="@color/fundaldark"
+        app:cardElevation="5dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="35dp"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="false"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            app:srcCompat="@drawable/user" />
-
-        <com.example.narcis.zvonne.obiecte.otf
-            android:id="@+id/numecont"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/imageView"
-            android:textColor="@color/white"
-            android:textSize="@dimen/titlu"
-           />
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
 
-        <com.example.narcis.zvonne.obiecte.otf
-            android:id="@+id/emailcont"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/numecont"
-            android:layout_below="@+id/numecont"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
-            android:textSize="@dimen/normal"
-          />
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                app:srcCompat="@drawable/ic_account_circle_white_24dp" />
+
+            <com.example.narcis.zvonne.obiecte.otf
+                android:id="@+id/numecont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titlu" />
+
+            <com.example.narcis.zvonne.obiecte.otf
+                android:id="@+id/emailcont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/numecont"
+                android:layout_below="@+id/numecont"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textSize="@dimen/normal" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
     <com.example.narcis.zvonne.obiecte.butonotf
 

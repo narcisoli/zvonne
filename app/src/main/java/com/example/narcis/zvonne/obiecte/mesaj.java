@@ -7,13 +7,26 @@ package com.example.narcis.zvonne.obiecte;
 public class mesaj {
     String user;
     String text;
+    String poza;
+
 
     public mesaj() {
+
     }
 
-    public mesaj(String user, String text) {
+    public mesaj(String user, String text, String poza) {
         this.user = user;
         this.text = text;
+        this.poza = poza;
+
+    }
+
+    public String getPoza() {
+        return poza;
+    }
+
+    public void setPoza(String poza) {
+        this.poza = poza;
     }
 
     public String getText() {

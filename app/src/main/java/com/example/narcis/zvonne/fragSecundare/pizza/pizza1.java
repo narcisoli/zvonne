@@ -84,7 +84,7 @@ public class pizza1 extends Fragment {
     }
 
     private void init() {
-         ratingBar = (MaterialRatingBar) myView.findViewById(R.id.rating_bar);
+        ratingBar = (MaterialRatingBar) myView.findViewById(R.id.rating_bar);
         evalueaza=(RelativeLayout)myView.findViewById(R.id.evalueaza);
         evalueaza.setOnClickListener(new View.OnClickListener() {
             @Override

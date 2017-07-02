@@ -38,6 +38,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class pizza2 extends Fragment {
 
+    private static pizza2 instance;
     private View myView;
     private pizza pizza;
     private ImageView trimite;
@@ -47,18 +48,18 @@ public class pizza2 extends Fragment {
     private adaptormesaj adaptor;
     private DatabaseReference db;
 
+    public static pizza2 getInstance(){
+        if (instance==null)
+            instance=new pizza2();
+        return instance;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView=inflater.inflate(R.layout.evenfrag2,container,false);
         init();
         return myView;
     }
-    private static pizza2 instance;
-    public static pizza2 getInstance(){
-        if (instance==null)
-            instance=new pizza2();
-        return instance;
-    }
+
     private void init() {
         editText=(EditText)myView.findViewById(R.id.edittext1);
         listView=(ListView)myView.findViewById(R.id.listamesjae1);
@@ -74,7 +75,7 @@ public class pizza2 extends Fragment {
                     Toast.makeText(view.getContext(), "Trebuie sa introduceti ceva", Toast.LENGTH_SHORT).show();
                 else {
 
-                    db.push().setValue(new mesaj(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),editText.getText().toString()));
+                    db.push().setValue(new mesaj(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),editText.getText().toString(),FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()));
                     editText.setText("");
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);

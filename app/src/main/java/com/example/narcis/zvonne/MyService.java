@@ -53,6 +53,7 @@ public class MyService extends Service {
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 notif();
                 Log.i("Notif", "notificare");
+
             }
 
             @Override
@@ -75,34 +76,34 @@ public class MyService extends Service {
     private void notif() {
 
 
-            Intent notificationIntent = new Intent(this, MainActivity.class);
-            notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            notificationIntent.putExtra("fragment", "comenzi");
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        notificationIntent.putExtra("fragment", "comenzi");
 
 
-            notificationIntent.setAction(Intent.ACTION_MAIN);
-            notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationIntent.setAction(Intent.ACTION_MAIN);
+        notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            NotificationManager nm = (NotificationManager) this
-                    .getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager nm = (NotificationManager) this
+                .getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-            Notification.Builder builder = new Notification.Builder(this);
-            Resources res = this.getResources();
-            builder.setContentIntent(pendingIntent)
-                    .setSmallIcon(R.drawable.zvonne)
-                    .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.zvonne))
-                    .setTicker("Ticker")
-                    .setWhen(System.currentTimeMillis())
-                    .setAutoCancel(true)
-                    .setContentTitle("Zvonne App")
-                    .setContentText("O actualizare noua");
-            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            builder.setSound(alarmSound);
-            Notification n = builder.build();
+        Notification.Builder builder = new Notification.Builder(this);
+        Resources res = this.getResources();
+        builder.setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.zvonne)
+                .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.zvonne))
+                .setTicker("Ticker")
+                .setWhen(System.currentTimeMillis())
+                .setAutoCancel(true)
+                .setContentTitle("Zvonne App")
+                .setContentText("O actualizare noua");
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        builder.setSound(alarmSound);
+        Notification n = builder.build();
 
-            nm.notify(1, n);
+        nm.notify((int) System.currentTimeMillis(), n);
 
     }
 }

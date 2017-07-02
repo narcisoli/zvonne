@@ -77,7 +77,7 @@ public class eventFRAG2 extends Fragment {
                     Toast.makeText(view.getContext(), "Trebuie sa introduceti ceva", Toast.LENGTH_SHORT).show();
                 else {
 
-                    db.push().setValue(new mesaj(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),editeText.getText().toString()));
+                    db.push().setValue(new mesaj(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),editeText.getText().toString(),FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString()));
                     editeText.setText("");
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);

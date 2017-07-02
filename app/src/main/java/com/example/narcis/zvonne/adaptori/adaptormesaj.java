@@ -9,13 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.narcis.zvonne.MainActivity;
 import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.obiecte.mesaj;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -52,8 +57,12 @@ public class adaptormesaj extends ArrayAdapter<mesaj> {
         if (loc != null) {
 
             TextView id=(TextView)view.findViewById(R.id.numemesaj);
+            CircleImageView poza=(CircleImageView)view.findViewById(R.id.poza);
             TextView detalii=(TextView)view.findViewById(R.id.mesajtext);
-
+            Glide.with(view.getContext())
+                    .load(loc.getPoza())
+                    .placeholder(R.drawable.zvonneicon)
+                    .into(poza);
             id.setText(loc.getUser());
             detalii.setText(loc.getText());
 

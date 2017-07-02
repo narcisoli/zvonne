@@ -3,9 +3,11 @@ package com.example.narcis.zvonne.adaptori;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -17,20 +19,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.narcis.zvonne.R;
+import com.example.narcis.zvonne.fragPrincipale.meniu;
 import com.example.narcis.zvonne.fragSecundare.pizza.pizza2;
 import com.example.narcis.zvonne.obiecte.blur;
 import com.example.narcis.zvonne.obiecte.pizza;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
+import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +94,7 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
 
 
             StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagini").child("Pizza").child(loc.getTip() + ".jpg");
-            final Transformation blurTransformation = new Transformation() {
+            /*    final Transformation blurTransformation = new Transformation() {
                 @Override
                 public Bitmap transform(Bitmap source) {
                     Bitmap blurred = blur.fastblur(view.getContext(), source, 10);
@@ -129,6 +135,13 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
 
                 }
             });
+            */
+
+            Glide.with(view.getContext())
+                    .using(new FirebaseImageLoader())
+                    .load(storageReference)
+                    .placeholder(R.drawable.zvonneicon)
+                    .into(imageView);
             tip.setText(loc.getTip());
             ingrediente.setText(loc.getIngrediente());
             TextView b1 = (TextView) view.findViewById(R.id.butonpizza);
@@ -146,6 +159,33 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
             public void onClick(View view) {
                pizza2.getInstance().setPizza(pizzaList.get(position));
                supportFragmentManager.beginTransaction().replace(R.id.container,pizza2.getInstance()).addToBackStack("").commit();
+            }
+        });
+        rel3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                String[] items = {"Foarte buna","Buna","Ok","Rea","Foarte rea"};
+                new LovelyChoiceDialog(view.getContext())
+                        .setTopColorRes(R.color.fundaldark)
+                        .setTopTitle("Evalueaza")
+                        .setTopTitleColor(Color.WHITE)
+                        .setItems(items, new LovelyChoiceDialog.OnItemSelectedListener<String>() {
+                            @Override
+                            public void onItemSelected(int position1, String item) {
+                                pizza pizza=pizzaList.get(position);
+                                float nota=(pizza.getNota()*pizza.getNrvoturi()+(5-position1))/(pizza.getNrvoturi()+1);
+                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nota").setValue(nota);
+                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nrvoturi").setValue(pizza.getNrvoturi()+1);
+                                meniu.newInstance().refresh();
+
+                                Snackbar snackbar = Snackbar
+                                        .make(view, "Va multumim pentru vot", Snackbar.LENGTH_SHORT);
+
+                                snackbar.show();
+
+                            }
+                        })
+                        .show();
             }
         });
 
