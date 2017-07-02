@@ -90,7 +90,11 @@ public class confirmafragment extends Fragment {
                                     a += "\nDetalii: " + detalii.getText().toString();
 
                                 long i = System.currentTimeMillis();
-                                coman coman = new coman(a, FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), 1, i, numartelefon.getText().toString());
+                                Calendar c = Calendar.getInstance();
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+
+                                String formattedDate = df.format(c.getTime());
+                                coman coman = new coman(a, FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate, 1, i, numartelefon.getText().toString());
 
                                 FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i + "").setValue(coman);
                                 getFragmentManager().popBackStack();

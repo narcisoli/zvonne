@@ -34,11 +34,9 @@ public class MyService extends Service {
     private static long UPDATE_INTERVAL = 1*5*1000;  //default
 
     private static Timer timer = new Timer();
-    private boolean bool = false;
 
-    public MyService() {
-        Log.i("Notif", "contructor");
-    }
+
+
 
 
 
@@ -49,6 +47,8 @@ public class MyService extends Service {
         _startService();
         Log.i("Notif", "start service");
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
+        DatabaseReference db1 = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Oferte");
+
         Query query = db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         query.addChildEventListener(new ChildEventListener() {
             @Override
@@ -81,6 +81,7 @@ public class MyService extends Service {
         });
     }
 
+
     private void notif(coman loc) {
         String a="";
 
@@ -103,6 +104,7 @@ public class MyService extends Service {
 
             a="Comanda a fost anulata";
         }
+
         Intent notificationIntent = new Intent(this, MainActivity.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         notificationIntent.putExtra("fragment", "comenzi");

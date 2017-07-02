@@ -140,6 +140,11 @@ public class meniu extends Fragment implements adaptorpizzameniu.adaptorCallBack
         mCallback.mesajpizza(pizza);
     }
 
+    @Override
+    public void refresh1() {
+        refresh();
+    }
+
 
     public interface OnHeadlineSelectedListener {
         public void mesajpizza(pizza pizza);

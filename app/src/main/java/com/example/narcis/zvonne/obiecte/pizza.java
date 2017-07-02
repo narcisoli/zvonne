@@ -80,7 +80,7 @@ public class pizza {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
 
@@ -90,5 +90,19 @@ public class pizza {
 
     public void setNrbucati(int nrbucati) {
         this.nrbucati = nrbucati;
+    }
+
+    @Override
+    public String toString() {
+        return "pizza{" +
+                "tip='" + tip + '\'' +
+                ", ingrediente='" + ingrediente + '\'' +
+                ", gramaj='" + gramaj + '\'' +
+                ", pret=" + pret +
+                ", nrvoturi=" + nrvoturi +
+                ", nrcomenzi=" + nrcomenzi +
+                ", nota=" + nota +
+                ", nrbucati=" + nrbucati +
+                '}';
     }
 }

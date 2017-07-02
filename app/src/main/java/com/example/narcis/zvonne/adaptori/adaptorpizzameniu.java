@@ -159,10 +159,13 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
                             @Override
                             public void onItemSelected(int position1, String item) {
                                 pizza pizza=pizzaList.get(position);
-                                float nota=(pizza.getNota()*pizza.getNrvoturi()+(5-position1))/(pizza.getNrvoturi()+1);
+                                float nota=(pizza.getNota()*pizza.getNrvoturi()+(float)(5-position1))/(float)(pizza.getNrvoturi()+1);
+                                pizza.setNota(nota);
+                                pizza.setNrvoturi(pizza.getNrvoturi()+1);
+                                Log.i("numar",pizza.toString());
                                 FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nota").setValue(nota);
-                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nrvoturi").setValue(pizza.getNrvoturi()+1);
-                                meniu.newInstance().refresh();
+                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nrvoturi").setValue(pizza.getNrvoturi());
+                                adaptorCallBack.refresh1();
 
                                 Snackbar snackbar = Snackbar
                                         .make(view, "Va multumim pentru vot", Snackbar.LENGTH_SHORT);
@@ -252,6 +255,7 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
 
     public interface adaptorCallBack {
         void adauga(pizza pizza);
+        void refresh1();
     }
 
 
