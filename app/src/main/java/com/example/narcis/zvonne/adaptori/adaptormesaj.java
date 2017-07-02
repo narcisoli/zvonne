@@ -20,8 +20,6 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 
 /**
  * Created by Narcis on 9/7/2016.
@@ -57,7 +55,7 @@ public class adaptormesaj extends ArrayAdapter<mesaj> {
         if (loc != null) {
 
             TextView id=(TextView)view.findViewById(R.id.numemesaj);
-            CircleImageView poza=(CircleImageView)view.findViewById(R.id.poza);
+            ImageView poza=(ImageView)view.findViewById(R.id.poza);
             TextView detalii=(TextView)view.findViewById(R.id.mesajtext);
             Glide.with(view.getContext())
                     .load(loc.getPoza())

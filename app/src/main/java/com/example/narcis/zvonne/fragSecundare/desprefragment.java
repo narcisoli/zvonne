@@ -25,17 +25,7 @@ public class desprefragment extends Fragment {
 
 
         myView=inflater.inflate(R.layout.despre,container,false);
-        Button f=(Button)myView.findViewById(R.id.facebook);
-        Button navigare=(Button)myView.findViewById(R.id.navigheaza);
-        f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = "https://www.facebook.com/cafeneaua.zvonne.3";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
-            }
-        });
+
 
 
 
