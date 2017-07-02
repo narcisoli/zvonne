@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements  comandafragment.
         nearby = bottomBar.getTabWithId(R.id.tab_comanda);
         ascultabutoane();
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        bottomBar.selectTabAtPosition(2, true);
+        bottomBar.selectTabAtPosition(0, true);
 
 
     }
@@ -171,11 +171,12 @@ public class MainActivity extends AppCompatActivity implements  comandafragment.
             switch (pos) {
 
                 case 0:
-                    return meniu.newInstance();
-                case 1:
-                    return eventfragment.newInstance();
-                case 2:
                     return menufragment.newInstance();
+
+                case 1:
+                    return meniu.newInstance();
+                case 2:
+                    return eventfragment.newInstance();
                 case 3:
                     return comandafragment.newInstance();
                 case 4:
