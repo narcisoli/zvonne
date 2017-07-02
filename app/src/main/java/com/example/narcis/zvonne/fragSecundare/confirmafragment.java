@@ -47,7 +47,7 @@ public class confirmafragment extends Fragment {
     private EditText detalii;
     private EditText numartelefon;
     private EditText adresa;
-    private Integer i=0;
+
 
     public static confirmafragment getInstance(){
         if (instance==null)
@@ -57,19 +57,6 @@ public class confirmafragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.confirmafragment, container, false);
-         final DatabaseReference zv=FirebaseDatabase.getInstance().getReference().child("Zvonne").child("totalcomenzi");
-        zv.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                i=dataSnapshot.getValue(Integer.class);
-                zv.setValue(i+1);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         b=(ImageView) myView.findViewById(R.id.comandac2);
         detalii=(EditText)myView.findViewById(R.id.detaliic2);
         numartelefon=(EditText)myView.findViewById(R.id.numartelefon);
@@ -95,12 +82,9 @@ public class confirmafragment extends Fragment {
                             a+="Adresa: "+adresa.getText().toString();
                             if (detalii.getText().toString().trim()!="")
                                 a+="\nDetalii: "+detalii.getText().toString();
-                            Calendar c = Calendar.getInstance();
-                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
-                            String formattedDate = df.format(c.getTime());
 
-
-                            coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate,1,i,numartelefon.getText().toString());
+                            long i=System.currentTimeMillis();
+                            coman coman=new coman(a,FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),1,i,numartelefon.getText().toString());
 
                             FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi").child(i+"").setValue(coman);
                             getFragmentManager().popBackStack();
@@ -109,7 +93,6 @@ public class confirmafragment extends Fragment {
                         }
                     });
                     builder.setNegativeButton("Nu",null);
-
                     AlertDialog dialog = builder.create();
                     dialog.show();
 

@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.obiecte.coman;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -48,7 +50,12 @@ public class adaptoristoric extends ArrayAdapter<coman> {
         loc = getItem(position);
 
         if (loc != null) {
-            data.setText(loc.getData());
+            long timestamp = loc.getId();
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(timestamp);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String dateStr1 = sdf.format(cal.getTime());
+            data.setText(dateStr1);
             detalii.setText(loc.getText());
             if (loc.getStatus() == 1)
                 status.setText("Neconfirmata");

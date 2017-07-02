@@ -7,16 +7,14 @@ package com.example.narcis.zvonne.obiecte;
 public class coman {
     String text;
     String nume;
-    String data;
     String nrdetelefon;
-    int id;
+    long id;
     int status;
 
  public coman(){}
-    public coman(String text, String nume, String data, int status, int id,String numar) {
+    public coman(String text, String nume, int status, long id,String numar) {
         this.text = text;
         this.nume = nume;
-        this.data = data;
         this.status = status;
         this.id=id;
         this.nrdetelefon=numar;
@@ -46,13 +44,6 @@ public class coman {
         this.nume = nume;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
 
     public int getStatus() {
         return status;
@@ -62,11 +53,11 @@ public class coman {
         this.status = status;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

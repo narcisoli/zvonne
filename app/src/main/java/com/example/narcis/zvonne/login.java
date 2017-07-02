@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class login extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 9001;
+    ImageView imagegoogle;
+    CardView imagefacebook;
     private SignInButton google;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
@@ -43,23 +46,19 @@ public class login extends FragmentActivity implements GoogleApiClient.OnConnect
     private GoogleApiClient mGoogleApiClient;
     private int x;
     private ProgressBar progressBar;
-    ImageView imagegoogle;
-    Button imagefacebook;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginactivity);
+
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             Intent a = new Intent(this, MainActivity.class);
             startActivity(a);
             finish();
             Log.i("Debug","S-a conectat automat");
         }
-        imagefacebook=(Button) findViewById(R.id.iamgefacebook);
+        imagefacebook=(CardView) findViewById(R.id.iamgefacebook);
         imagegoogle=(ImageView)findViewById(R.id.imagegoogle);
         progressBar=(ProgressBar)findViewById(R.id.progressBar2);
 

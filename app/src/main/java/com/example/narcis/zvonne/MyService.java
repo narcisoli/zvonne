@@ -1,5 +1,6 @@
 package com.example.narcis.zvonne;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,8 +12,11 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.narcis.zvonne.obiecte.coman;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -22,24 +26,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MyService extends Service {
 
+    private static long UPDATE_INTERVAL = 1*5*1000;  //default
 
+    private static Timer timer = new Timer();
     private boolean bool = false;
 
     public MyService() {
         Log.i("Notif", "contructor");
     }
 
-    @Override
-    public IBinder onBind(Intent intent) {
-        Log.i("Notif", "ibind error");
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+
 
     @Override
     public void onCreate() {
+
         super.onCreate();
+        _startService();
         Log.i("Notif", "start service");
         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
         Query query = db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
@@ -51,7 +58,8 @@ public class MyService extends Service {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                notif();
+                coman c = dataSnapshot.getValue(coman.class);
+                notif(c);
                 Log.i("Notif", "notificare");
 
             }
@@ -73,7 +81,7 @@ public class MyService extends Service {
         });
     }
 
-    private void notif() {
+    private void notif(coman c) {
 
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
@@ -98,7 +106,7 @@ public class MyService extends Service {
                 .setWhen(System.currentTimeMillis())
                 .setAutoCancel(true)
                 .setContentTitle("Zvonne App")
-                .setContentText("O actualizare noua");
+                .setContentText(c.getText());
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         builder.setSound(alarmSound);
         Notification n = builder.build();
@@ -106,4 +114,80 @@ public class MyService extends Service {
         nm.notify((int) System.currentTimeMillis(), n);
 
     }
+
+
+    private void _startService()
+    {
+        timer.scheduleAtFixedRate(
+
+                new TimerTask() {
+
+                    public void run() {
+
+                        doServiceWork();
+
+                    }
+                }, 1000,UPDATE_INTERVAL);
+        Log.i(getClass().getSimpleName(), "FileScannerService Timer started....");
+    }
+
+    private void doServiceWork()
+    {
+        //do something wotever you want
+        //like reading file or getting data from network
+        try {
+        }
+        catch (Exception e) {
+        }
+
+    }
+
+    private void _shutdownService()
+    {
+        if (timer != null) timer.cancel();
+        Log.i(getClass().getSimpleName(), "Timer stopped...");
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+
+        _shutdownService();
+
+        // if (MAIN_ACTIVITY != null)  Log.d(getClass().getSimpleName(), "FileScannerService stopped");
+    }
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // TODO Auto-generated method stub
+        return START_STICKY;
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        // TODO Auto-generated method stub
+        Intent restartService = new Intent(getApplicationContext(),
+                this.getClass());
+        restartService.setPackage(getPackageName());
+        PendingIntent restartServicePI = PendingIntent.getService(
+                getApplicationContext(), 1, restartService,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        //Restart the service once it has been killed android
+
+
+        AlarmManager alarmService = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        alarmService.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() +100, restartServicePI);
+
+    }
+
+
 }

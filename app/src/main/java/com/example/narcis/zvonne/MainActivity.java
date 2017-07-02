@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements pizza1.comunicare
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         startService(new Intent(this, MyService.class));
 
 
