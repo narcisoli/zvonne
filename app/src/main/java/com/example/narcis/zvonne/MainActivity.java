@@ -41,8 +41,11 @@ public class MainActivity extends AppCompatActivity implements  comandafragment.
         try {
             receive=getIntent().getExtras().getString("fragment");
         }catch (Exception ex){};
-        if(receive!="")
-            Toast.makeText(this, "daad", Toast.LENGTH_SHORT).show();
+        if(receive!="") {
+            startActivity(new Intent(this, LogoScreen.class));
+            finish();
+        }
+
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements  comandafragment.
 
         init();
         nearby = bottomBar.getTabWithId(R.id.tab_comanda);
+        ascultabutoane();
         ascultabutoane();
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         bottomBar.selectTabAtPosition(0, true);

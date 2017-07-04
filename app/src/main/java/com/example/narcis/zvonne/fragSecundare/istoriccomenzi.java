@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.etsy.android.grid.StaggeredGridView;
 import com.example.narcis.zvonne.R;
 import com.example.narcis.zvonne.adaptori.adaptoristoric;
 import com.example.narcis.zvonne.obiecte.coman;
@@ -34,7 +35,7 @@ import java.util.List;
 public class istoriccomenzi extends Fragment {
     private static istoriccomenzi instance;
     View myView;
-    private GridView lista;
+    private StaggeredGridView lista;
     private List<coman> comanList=new ArrayList<>();
     private adaptoristoric a;
 
@@ -47,7 +48,7 @@ public class istoriccomenzi extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         myView=inflater.inflate(R.layout.istoriccomenzi,container,false);
-        lista=(GridView)myView.findViewById(R.id.listacomenzi);
+        lista=(StaggeredGridView)myView.findViewById(R.id.listacomenzi);
 
          a=new adaptoristoric(myView.getContext(),R.layout.adaptoristoric,comanList);
         lista.setAdapter(a);

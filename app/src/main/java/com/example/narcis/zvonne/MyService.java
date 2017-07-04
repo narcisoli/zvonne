@@ -45,40 +45,42 @@ public class MyService extends Service {
 
         super.onCreate();
         _startService();
-        Log.i("Notif", "start service");
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
-        DatabaseReference db1 = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Oferte");
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
+            Log.i("Notif", "start service");
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("Zvonne").child("comenzi");
 
-        Query query = db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-            }
+            Query query = db.orderByChild("nume").equalTo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            query.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                coman c = dataSnapshot.getValue(coman.class);
-                notif(c);
-                Log.i("Notif", "notificare");
+                }
 
-            }
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    coman c = dataSnapshot.getValue(coman.class);
+                    notif(c);
+                    Log.i("Notif", "notificare");
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                }
 
-            }
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                }
 
-            }
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
 
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
 

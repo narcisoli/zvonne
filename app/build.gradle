@@ -54,7 +54,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'me.zhanghai.android.materialratingbar:library:1.0.2'
-
+    compile 'com.etsy.android.grid:library:1.0.5'
 
     testCompile 'junit:junit:4.12'
 }
