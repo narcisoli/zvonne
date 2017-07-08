@@ -91,7 +91,7 @@ public class confirmafragment extends Fragment {
 
                                 long i = System.currentTimeMillis();
                                 Calendar c = Calendar.getInstance();
-                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
                                 String formattedDate = df.format(c.getTime());
                                 coman coman = new coman(a, FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),formattedDate, 1, i, numartelefon.getText().toString());
