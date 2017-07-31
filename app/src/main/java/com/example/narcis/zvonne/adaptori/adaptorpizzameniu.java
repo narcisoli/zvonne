@@ -2,7 +2,9 @@ package com.example.narcis.zvonne.adaptori;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.narcis.zvonne.R;
@@ -27,6 +30,8 @@ import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -143,8 +148,8 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
         rel2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               pizza2.getInstance().setPizza(pizzaList.get(position));
-               supportFragmentManager.beginTransaction().replace(R.id.container,pizza2.getInstance()).addToBackStack("").commit();
+                pizza2.getInstance().setPizza(pizzaList.get(position));
+                supportFragmentManager.beginTransaction().replace(R.id.container,pizza2.getInstance()).addToBackStack("").commit();
             }
         });
         rel3.setOnClickListener(new View.OnClickListener() {
@@ -159,19 +164,36 @@ public class adaptorpizzameniu extends ArrayAdapter<pizza> {
                             @Override
                             public void onItemSelected(int position1, String item) {
                                 pizza pizza=pizzaList.get(position);
-                                float nota=(pizza.getNota()*pizza.getNrvoturi()+(float)(5-position1))/(float)(pizza.getNrvoturi()+1);
-                                pizza.setNota(nota);
-                                pizza.setNrvoturi(pizza.getNrvoturi()+1);
-                                Log.i("numar",pizza.toString());
-                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nota").setValue(nota);
-                                FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nrvoturi").setValue(pizza.getNrvoturi());
-                                adaptorCallBack.refresh1();
+                                SharedPreferences prefs = view.getContext().getSharedPreferences("Zvonne", MODE_PRIVATE);
+                                boolean bool= prefs.getBoolean(pizza.getTip(),true);
+                                if(bool) {
 
-                                Snackbar snackbar = Snackbar
-                                        .make(view, "Va multumim pentru vot", Snackbar.LENGTH_SHORT);
 
-                                snackbar.show();
+                                    float nota = (pizza.getNota() * pizza.getNrvoturi() + (float) (5 - position1)) / (float) (pizza.getNrvoturi() + 1);
+                                    pizza.setNota(nota);
+                                    pizza.setNrvoturi(pizza.getNrvoturi() + 1);
+                                    Log.i("numar", pizza.toString());
+                                    FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nota").setValue(nota);
+                                    FirebaseDatabase.getInstance().getReference().child("Zvonne").child("Pizza").child(pizza.getTip()).child("nrvoturi").setValue(pizza.getNrvoturi());
+                                    adaptorCallBack.refresh1();
 
+                                    Snackbar snackbar = Snackbar
+                                            .make(view, "Va multumim pentru vot", Snackbar.LENGTH_SHORT);
+
+                                    snackbar.show();
+                                    SharedPreferences.Editor editor = view.getContext().getSharedPreferences("Zvonne", MODE_PRIVATE).edit();
+
+                                    editor.putBoolean(pizza.getTip(),false);
+                                    editor.commit();
+                                }
+                                else {
+
+                                    Snackbar snackbar = Snackbar
+                                            .make(view, "Ai votat deja", Snackbar.LENGTH_SHORT);
+
+                                    snackbar.show();
+
+                                }
                             }
                         })
                         .show();

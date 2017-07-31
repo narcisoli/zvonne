@@ -34,7 +34,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="center"
+                    android:scaleType="fitXY"
                     android:src="@color/white" />
 
                 <RelativeLayout
